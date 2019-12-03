@@ -1,0 +1,12 @@
+﻿  Player.cpp
+  Sprite.cpp
+  Generating Code...
+Source.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol SDL_Delay referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function SDL_main
+Source.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function SDL_main
+MSVCRTD.lib(exe_winmain.obj) : error LNK2019: unresolved external symbol WinMain referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\olema\Documents\GitHub\Test\SDL\SDL2\lib\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\olema\Documents\GitHub\Test\SDL\SDL2\lib\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\olema\Documents\GitHub\Test\SDL\SDLproject\x64\Debug\SDLproject.exe : fatal error LNK1120: 6 unresolved externals
