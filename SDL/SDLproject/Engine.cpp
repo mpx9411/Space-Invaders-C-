@@ -22,10 +22,6 @@ void Engine::start() {
 
 }
 
-void Engine::play() {
-
-}
-
 void Engine::terminate() {
 	SDL_DestroyWindow(window);
 	SDL_Quit();

@@ -6,7 +6,6 @@ class Engine
 public:
 	SDL_Window* window;
 	void start();
-	void play();
 	void terminate();
 };
 
