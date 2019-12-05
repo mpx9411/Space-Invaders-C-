@@ -1,2 +1,4 @@
-﻿  Engine.cpp
-  SDLproject.vcxproj -> C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Debug\SDLproject.exe
+﻿  Sprite.cpp
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(4,33): error C2511: 'Sprite::Sprite(SDL_Window &)': overloaded member function not found in 'Sprite'
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.h(2): message : see declaration of 'Sprite'
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(5,2): error C2065: 'spr_pointer': undeclared identifier

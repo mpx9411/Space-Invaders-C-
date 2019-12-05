@@ -7,5 +7,8 @@ public:
 	SDL_Window* window;
 	void start();
 	void terminate();
+private:
+	bool dontStop;
+	void gameLoop();
 };
 

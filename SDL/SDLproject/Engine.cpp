@@ -1,7 +1,10 @@
 #include "Engine.h"
 #include "SDL.h"
+#include "Sprite.h"
+#include "Player.h"
 
 void Engine::start() {
+
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
 		"SPACE INVADER", //TITLE
@@ -18,9 +21,17 @@ void Engine::start() {
 	SDL_RenderPresent(ren);
 	SDL_Delay(5000);
 
-
-
 }
+
+void Engine::gameLoop() {
+	while (dontStop) {
+		switch (nextEvent) {
+		case:
+		default:
+		}
+	}
+}
+
 
 void Engine::terminate() {
 	SDL_DestroyWindow(window);

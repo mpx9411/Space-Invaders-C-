@@ -1,7 +1,11 @@
 #pragma once
 #include "Sprite.h"
-class Player :
-	public Sprite
-{
+#include "SDL.h"
+class Player :	public Sprite{
+public:
+	Player getInstance(int x);
+	void draw() const;
+	void tick();
+
 };
 
