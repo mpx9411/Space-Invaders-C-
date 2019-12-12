@@ -1,4 +1,10 @@
-﻿  Sprite.cpp
-C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(4,33): error C2511: 'Sprite::Sprite(SDL_Window &)': overloaded member function not found in 'Sprite'
-C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.h(2): message : see declaration of 'Sprite'
-C:\Users\olema\Documents\GitHub\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(5,2): error C2065: 'spr_pointer': undeclared identifier
+﻿  Engine.cpp
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Engine.cpp(28,11): error C2065: 'nextEvent': undeclared identifier
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Engine.cpp(28,22): error C2050: switch expression not integral
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Engine.cpp(29,7): error C2059: syntax error: ':'
+  Sprite.cpp
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Engine.cpp(31,3): warning C4060: switch statement contains no 'case' or 'default' labels
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(4,33): error C2511: 'Sprite::Sprite(SDL_Window &)': overloaded member function not found in 'Sprite'
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Sprite.h(2): message : see declaration of 'Sprite'
+  Generating Code...
+C:\Users\olema\Documents\GitHub\CPROG_Inlupp\CPROG_Inlupp\SDL\SDLproject\Sprite.cpp(5,2): error C2065: 'spr_pointer': undeclared identifier
