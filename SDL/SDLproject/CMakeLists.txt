@@ -24,7 +24,7 @@ file(GLOB SOURCES *.cpp *.h)
 #set(SOURCE_FILES main.cpp)
 #### TA INTE BORT
 #add_executable(Spel ${SOURCES} src/System.cpp src/System.h src/Sprite.cpp src/Sprite.h src/MovingSprite.cpp src/MovingSprite.h)
-add_executable(CPROG_Inlupp ${SOURCES} Engine.h Engine.cpp source.cpp GameObject.cpp GameObject.h  Sprite.cpp Sprite.h Player.cpp Player.h Invader.cpp Invader.h Bullet.cpp Bullet.h)
+add_executable(CPROG_Inlupp ${SOURCES} Engine.h Engine.cpp source.cpp GameObject.cpp GameObject.h  Sprite.cpp Sprite.h Player.cpp Player.h Invader.cpp Invader.h Bullet.cpp Bullet.h Session.cpp Session.h)
 #### TA INTE BORT
 
 target_link_libraries(CPROG_Inlupp ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES}
