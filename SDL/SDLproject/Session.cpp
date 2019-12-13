@@ -26,7 +26,7 @@ void Session::run() {
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
-			case SDL_Quit: keepGoing = false; break;
+			case SDL_QUIT: keepGoing = false; break;
 			case SDLK_RIGHT:
 				for (GameObject* o : objects)
 					o->keyRight(event);
@@ -50,7 +50,7 @@ void Session::run() {
 		added.clear();
 		
 		for(GameObject* o : removed)
-			for(vector<GameObject*>::iterator i = objects.begin(); i != comps.end();)
+			for(vector<GameObject*>::iterator i = objects.begin(); i != objects.end();)
 				if (*i == o) {
 					i = objects.erase(i);
 				}
