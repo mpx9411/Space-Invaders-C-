@@ -1,5 +1,6 @@
-#ifndef PLAYER.H
-#define PLAYER.H
+#ifndef PLAYERH
+#define PLAYER_H
+
 #include "GameObject.h"
 #include "Engine.h"
 #include "SDL.h"

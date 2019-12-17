@@ -1,7 +1,8 @@
 #include "Engine.h"
 #include "SDL.h"
-#include "Sprite.h"
 #include "Player.h"
+
+Engine::Engine(){}
 
 void Engine::start() {
 
@@ -11,7 +12,7 @@ void Engine::start() {
 		10, 25, // coordinates on the screen, in pixels, of the window's upper left corner
 		640, 480, // window's length and height in pixels  
 		SDL_WINDOW_OPENGL);
-	SDL_Renderer* ren = SDL_CreateRenderer(window, -1, 0);
+	ren = SDL_CreateRenderer(window, -1, 0);
 	SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 	SDL_Texture* hTex = SDL_CreateTextureFromSurface(ren, hSurf);
 	
@@ -23,17 +24,13 @@ void Engine::start() {
 
 }
 
-void Engine::gameLoop() {
-	while (dontStop) {
-		switch (nextEvent) {
-		case:
-		default:
-		}
-	}
+SDL_Renderer* Engine::getRen() const{
+	return ren;
 }
 
-
-void Engine::terminate() {
+ Engine :: ~Engine() {
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
+
+ Engine eng;

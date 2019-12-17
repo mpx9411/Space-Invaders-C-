@@ -1,7 +1,7 @@
-#pragma once
-#include "Sprite.h"
+/*#pragma once
+
 class Invader :
-	public Sprite
+	
 {
-};
+};*/
 

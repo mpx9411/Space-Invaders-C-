@@ -11,11 +11,10 @@ public:
 	~Engine();
 	SDL_Renderer* getRen() const;
 	void start();
-	void terminate();
 private:
 	SDL_Window* window;
+	SDL_Renderer* ren;
 	bool dontStop;
-	void gameLoop();
 };
 
 extern Engine eng;

@@ -6,6 +6,6 @@ int main(int argc, char* argv[])
 {
 	Engine eng;
 	eng.start();
-	eng.terminate();
+	delete &eng;
 	return 0;
 }

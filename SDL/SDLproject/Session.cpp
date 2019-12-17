@@ -16,7 +16,7 @@ void Session::remove(GameObject* o) {
 	removed.push_back(o);
 }
 void Session::run() {
-	SDL_SetRenderDrawColor(eng.getRen, 0, 0, 0, 0);
+	SDL_SetRenderDrawColor(eng.getRen(), 0, 0, 0, 0);
 	bool keepGoing = true;
 
 	Uint32 tickInterval = 1000 / FPS;
