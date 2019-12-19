@@ -10,9 +10,9 @@ void Engine::start() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
 		"SPACE INVADER", //TITLE
-		10, 25, // coordinates on the screen, in pixels, of the window's upper left corner
-		640, 480, // window's length and height in pixels  
-		SDL_WINDOW_OPENGL);
+		100, 100, // coordinates on the screen, in pixels, of the window's upper left corner
+		500, 600, // window's length and height in pixels
+		0);
 	ren = SDL_CreateRenderer(window, -1, 0);
 	//TODO Change the string to the right ABSOLUTE path plz
 
@@ -31,12 +31,14 @@ void Engine::start() {
 	SDL_FreeSurface(hSurf);
 
 
-    //SDL_Texture* gubbTx = SDL_CreateTextureFromSurface(ren,gubbSurf);
-//flytas efter färg inställningar
-    SDL_Rect pRect= {0,0,pSurf -> w, pSurf-> h}; //gubbsurf är en pekare och för att hämta info från själva objektet så använder vi av piloperatorn
-    Uint32 white = SDL_MapRGB(pSurf->format,255,255,255);
-    SDL_SetColorKey(pSurf,true,white);// alla pixlar som är vita kommer bli genomskilliga
+
     SDL_Texture* pTx = SDL_CreateTextureFromSurface(ren,pSurf);
+    SDL_Rect pRect= {0,0,(pSurf -> w), (pSurf-> h)};
+    //SDL_Rect sdlRect= {0,0,hSurf -> w, hSurf-> h};
+    //gubbsurf är en pekare och för att hämta info från själva objektet så använder vi av piloperatorn
+    //Uint32 white = SDL_MapRGB(pSurf->format,255,255,255);
+    //SDL_SetColorKey(pSurf,true,white);// alla pixlar som är vita kommer bli genomskilliga
+
     SDL_FreeSurface(pSurf);
 
 
@@ -75,7 +77,7 @@ void Engine::start() {
 
         SDL_RenderClear(ren);
         SDL_RenderCopy(ren, hTex, NULL, NULL);
-        SDL_RenderCopy(ren,pTx,&pRect,NULL);
+        SDL_RenderCopy(ren,pTx,NULL,&pRect);
         SDL_RenderPresent(ren);
     }
 
