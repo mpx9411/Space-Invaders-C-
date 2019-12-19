@@ -4,15 +4,16 @@
 class GameObject
 {
 public:
-	virtual void keyRight(const SDL_Event& event){}
-	virtual void keyLeft(const SDL_Event& event) {}
-	virtual void keySpace(const SDL_Event& event) {}
+	virtual void keyPressed(const SDL_Event& event){}
+
 
 	virtual ~GameObject(){}
 
 	SDL_Rect getRect() const { return rect; }
 	virtual void draw() const = 0;
 	virtual void tick() = 0;
+    GameObject(const GameObject&) = delete;
+    const GameObject& operator=(const GameObject&) = delete;
 
 protected:
 	GameObject(int x, int y, int w, int h);

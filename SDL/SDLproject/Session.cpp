@@ -1,5 +1,6 @@
 #include "Session.h"
 #include <SDL.h>
+#include "SDL_image.h"
 #include "Engine.h"
 #include "GameObject.h"
 using namespace std;
@@ -11,14 +12,51 @@ Session::Session(){
 }
 
 void Session::add(GameObject* o) {
-	added.push_back(o);
+	objects.push_back(o);
+    added.push_back(o);
 }
 
 void Session::remove(GameObject* o) {	
 	removed.push_back(o);
 }
 void Session::run() {
-	SDL_SetRenderDrawColor(eng.getRen(), 0, 0, 0, 0);
+
+    /**
+	 * Background
+	 */
+    /* ELSA */
+    //SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+
+    /* Sina */
+    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
+    SDL_FreeSurface(bgSurf);
+
+    SDL_Event e;
+    bool quit = false;
+    //bool drag = false;
+    while (!quit){
+        while (SDL_PollEvent(&e)){
+            if (e.type == SDL_QUIT){
+                quit = true;
+            }
+            if (e.type == SDL_KEYDOWN){
+                for (GameObject* c : objects)
+                    c->keyPressed(e);
+            }
+
+        }
+
+        SDL_RenderClear(eng.getRen());
+        SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
+        for (GameObject* c : objects)
+            c->draw();
+        SDL_RenderPresent(eng.getRen());
+    }
+
+
+    /*
+    SDL_SetRenderDrawColor(eng.getRen(), 0, 0, 0, 0);
 	bool keepGoing = true;
 
 	Uint32 tickInterval = 1000 / FPS;
@@ -69,4 +107,11 @@ void Session::run() {
 		if (delay > 0)
 			SDL_Delay(delay);
 	}
+     */
 }
+
+Session::~Session() {
+    for (GameObject* c : objects)
+        delete c;
+}
+

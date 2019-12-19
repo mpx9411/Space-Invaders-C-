@@ -1,5 +1,7 @@
 #include "Engine.h"
 #include "SDL.h"
+#include "Player.h"
+#include "Session.h"
 using namespace std;
 #include <SDL.h>
 
@@ -66,10 +68,19 @@ using namespace std;
     SDL_Quit();
     return 0;
 }*/
+
+Player* player;
+
 int main(int argc, char* argv[])
 {
-	Engine* eng = new Engine();
-	eng->start();
-	delete eng;
+	Session ses;
+	player= Player::getInstance(0,0,100,100,"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png");
+	ses.add(player);
+
+	//Engine* eng = new Engine();
+	//eng->start();
+	ses.run();
 	return 0;
+
+
 }

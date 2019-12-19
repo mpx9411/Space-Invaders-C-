@@ -1,18 +1,65 @@
-/*
+#include <SDL_image.h>
 #include "Player.h"
+#include "Engine.h"
+#include <iostream>
+using namespace std;
 
-Player::Player(int x, int y, int w, int h, string fLoc) :GameObject{x, y, w, h}{
-	const char* image = new char[fLoc.length() + 1];
-	image = fLoc.c_str();
-	SDL_Surface* pSprite = SDL_LoadBMP(image);
-	SDL_Texture* pTex = SDL_CreateTextureFromSurface(eng.getRen(), pSprite);
+Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, w, h}{
+
+    /* Sina */
+    //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
+
+    /* Elsa */
+    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png"
+	pTx = IMG_LoadTexture(eng.getRen(),path);
 
 }
 
-Player* Player::getInstance(int x, int y, int h, int w, string fLoc) {
-	return new Player(x, y, h, w, fLoc);
+Player* Player::getInstance(int x, int y, int h, int w, const char *path) {
+	return new Player(x, y, h, w, path);
 }
+
+void Player::draw() const {
+    SDL_Rect toffla = getRect();
+    SDL_RenderCopy(eng.getRen(),pTx,NULL,&toffla);
+}
+
+void Player::tick() {
+
+}
+
+Player::~Player() {
+    SDL_DestroyTexture(pTx);
+
+}
+
+void Player::keyPressed(const SDL_Event& e) {
+    SDL_Rect playerRect = getRect();
+    cout<< playerRect.h;
+    switch (e.key.keysym.sym) {
+        case SDLK_UP:
+            playerRect.y - 10;
+            cout<< &playerRect.y << "\n";
+            break;
+        case SDLK_RIGHT:
+            cout << playerRect.h ;
+            playerRect.h +10;
+            cout << " : " << playerRect.h << "\n" ;
+            break;
+        case SDLK_LEFT:
+            playerRect.x +10;
+            cout << "Change x-";
+            break;
+        //TODO case SDLK_SPACE
+    }
+    cout<<"pos för rect. Y: " << playerRect.y << ", X: " << playerRect.x;
+}
+
+
+
+/*void Player::keySpace(const SDL_Event &event) {
+    GameObject::keySpace(event);
+}*/
 
 //SKRIV DRAW METOD
 
-*/

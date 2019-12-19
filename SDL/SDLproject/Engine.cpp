@@ -3,10 +3,21 @@
 #include "Player.h"
 #include "SDL_image.h"
 
-Engine::Engine(){}
+Engine::Engine(){
+
+    int w=900;
+    int h=600;
+    SDL_Init(SDL_INIT_EVERYTHING);
+    window = SDL_CreateWindow(
+            "SPACE INVADER", //TITLE
+            100, 100, // coordinates on the screen, in pixels, of the window's upper left corner
+            w, h, // window's length and height in pixels
+            0);
+    ren = SDL_CreateRenderer(window, -1, 0);
+}
 
 void Engine::start() {
-    int w=900;
+   /* int w=900;
     int h=600;
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
@@ -15,23 +26,35 @@ void Engine::start() {
 		w, h, // window's length and height in pixels
 		0);
 	ren = SDL_CreateRenderer(window, -1, 0);
-	//TODO Change the string to the right ABSOLUTE path plz
+*/
 
+    /* ELSA */
+    //SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+
+
+
+	/*
+
+	//TODO Change the string to the right ABSOLUTE path plz
+*/
 	/* MAGNUS*/
 	//SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
     //SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 	/* SINA */
+
+	/*
+
     SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Surface* pSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png");
-
+*/
     /* ELSA */
     //SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
     //SDL_Surface* pSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png");
-
+/*
 	SDL_Texture* hTex = SDL_CreateTextureFromSurface(ren, hSurf);
 	SDL_FreeSurface(hSurf);
 
-
+SDL_Rect pRect= {(w-(pSurf -> w))/2,h-((pSurf-> h)),(pSurf -> w), (pSurf-> h)};
 
     SDL_Texture* pTx = SDL_CreateTextureFromSurface(ren,pSurf);
     SDL_Rect pRect= {(w-(pSurf -> w))/2,h-((pSurf-> h)),(pSurf -> w), (pSurf-> h)};
@@ -82,7 +105,7 @@ void Engine::start() {
         SDL_RenderPresent(ren);
     }
 
-
+*/
 
 }
 
@@ -91,8 +114,9 @@ SDL_Renderer* Engine::getRen() const{
 }
 
  Engine :: ~Engine() {
-	SDL_DestroyWindow(window);
-	SDL_Quit();
+     SDL_DestroyWindow(window);
+     SDL_DestroyRenderer(ren);
+     SDL_Quit();
 }
 
  Engine eng;

@@ -9,12 +9,19 @@ using namespace std;
 
 class Player :	public GameObject{
 public:
-	Player* getInstance(int x, int y, int h, int w, string fLoc);
+	static Player* getInstance(int x, int y, int h, int w, const char *path);
+
+
 	void draw() const;
 	void tick();
+	void keyPressed(const SDL_Event& event);
+     //void keySpace(const SDL_Event& event);
+
 	~Player();
 protected:
-	Player(int x, int y, int h, int w, string fLoc);
+	Player(int x, int y, int h, int w, const char *path);
+    SDL_Texture* pTx;
+    bool moving = false;
 };
 
 #endif
