@@ -19,11 +19,11 @@ void Engine::start() {
 
 	//SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 
-	/* SINA */
-    SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Player.png");
+	/* SINA
+    SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png"); */
 
     /* ELSA */
-    //SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Player.png");
+    SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
 	SDL_Texture* hTex = SDL_CreateTextureFromSurface(ren, hSurf);
 	SDL_FreeSurface(hSurf);

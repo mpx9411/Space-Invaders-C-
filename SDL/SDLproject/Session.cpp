@@ -6,7 +6,9 @@ using namespace std;
 
 #define FPS 60
 
-Session::Session(){}
+Session::Session(){
+
+}
 
 void Session::add(GameObject* o) {
 	added.push_back(o);
