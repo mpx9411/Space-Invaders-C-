@@ -20,31 +20,62 @@ void Engine::start() {
 	//SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 
 	/* SINA */
-    //SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* pSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png");
 
     /* ELSA */
-    SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* pSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png");
 
 	SDL_Texture* hTex = SDL_CreateTextureFromSurface(ren, hSurf);
 	SDL_FreeSurface(hSurf);
 
+
+    //SDL_Texture* gubbTx = SDL_CreateTextureFromSurface(ren,gubbSurf);
+//flytas efter färg inställningar
+    SDL_Rect pRect= {0,0,pSurf -> w, pSurf-> h}; //gubbsurf är en pekare och för att hämta info från själva objektet så använder vi av piloperatorn
+    Uint32 white = SDL_MapRGB(pSurf->format,255,255,255);
+    SDL_SetColorKey(pSurf,true,white);// alla pixlar som är vita kommer bli genomskilliga
+    SDL_Texture* pTx = SDL_CreateTextureFromSurface(ren,pSurf);
+    SDL_FreeSurface(pSurf);
+
+
     SDL_Event e;
     bool quit = false;
+    bool drag = false;
     while (!quit){
         while (SDL_PollEvent(&e)){
             if (e.type == SDL_QUIT){
                 quit = true;
             }
             if (e.type == SDL_KEYDOWN){
-                quit = true;
+                switch (e.key.keysym.sym) {
+                    case SDLK_UP: pRect.y--; break;
+                    case SDLK_DOWN: pRect.y++; break;
+                    case SDLK_RIGHT: pRect.x++; break;
+                    case SDLK_LEFT: pRect.x--; break;
+                }
             }
             if (e.type == SDL_MOUSEBUTTONDOWN){
-                quit = true;
+                SDL_Point p = {e.button.x, e.button.y};
+                if (SDL_PointInRect(&p,&pRect))
+                drag = true;
+            }
+            if (e.type == SDL_MOUSEBUTTONUP){
+                drag = false;
+            }
+            if (e.type == SDL_MOUSEMOTION){
+                if (drag){
+                    pRect.x += e.motion.xrel;
+                    pRect.y += e.motion.yrel;
+
+                }
             }
         }
 
         SDL_RenderClear(ren);
         SDL_RenderCopy(ren, hTex, NULL, NULL);
+        SDL_RenderCopy(ren,pTx,&pRect,NULL);
         SDL_RenderPresent(ren);
     }
 
