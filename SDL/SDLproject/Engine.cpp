@@ -18,7 +18,7 @@ void Engine::start() {
 
 	/* MAGNUS*/
 	//SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
-
+    //SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 	/* SINA */
     SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Surface* pSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png");
