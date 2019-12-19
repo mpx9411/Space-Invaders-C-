@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.8)
 project(CPROG_Inlupp)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
+find_package(SDL2 REQUIRED)
 
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
-find_package(SDL2 REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR})
@@ -24,7 +24,7 @@ file(GLOB SOURCES *.cpp *.h)
 #set(SOURCE_FILES main.cpp)
 #### TA INTE BORT
 #add_executable(Spel ${SOURCES} src/System.cpp src/System.h src/Sprite.cpp src/Sprite.h src/MovingSprite.cpp src/MovingSprite.h)
-add_executable(CPROG_Inlupp ${SOURCES} Engine.h Engine.cpp source.cpp GameObject.cpp GameObject.h  Sprite.cpp Sprite.h Player.cpp Player.h Invader.cpp Invader.h Bullet.cpp Bullet.h Session.cpp Session.h)
+add_executable(CPROG_Inlupp ${SOURCES} Engine.h Engine.cpp Source.cpp  GameObject.cpp GameObject.h  Player.cpp Player.h Invader.cpp Invader.h Bullet.cpp Bullet.h Session.cpp Session.h)
 #### TA INTE BORT
 
 target_link_libraries(CPROG_Inlupp ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES}
