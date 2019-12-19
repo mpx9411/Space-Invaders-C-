@@ -15,12 +15,12 @@ void Engine::start() {
 		SDL_WINDOW_OPENGL);
 	ren = SDL_CreateRenderer(window, -1, 0);
 	//TODO Change the string to the right ABSOLUTE path plz
-	/* MAGNUS*/
 
+	/* MAGNUS*/
 	//SDL_Surface* hSurf = SDL_LoadBMP("C:\\Users\\olema\\Downloads\\6e4.bmp");
 
-	/* SINA
-    SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png"); */
+	/* SINA */
+    //SDL_Surface* hSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
     /* ELSA */
     SDL_Surface* hSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
