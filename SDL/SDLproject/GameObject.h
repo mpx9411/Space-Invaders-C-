@@ -18,6 +18,7 @@ public:
 protected:
 	GameObject(int x, int y, int w, int h);
 	void setWH(int w, int h);
+	void setXY(int x, int y);
 
 private:
 	SDL_Rect rect;
