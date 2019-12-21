@@ -10,7 +10,7 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
-    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png"
+    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 
 }
