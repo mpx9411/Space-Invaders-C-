@@ -22,6 +22,7 @@ protected:
 	Player(int x, int y, int h, int w, const char *path);
     SDL_Texture* pTx;
     bool moving = false;
+	void shootB();
 };
 
 #endif

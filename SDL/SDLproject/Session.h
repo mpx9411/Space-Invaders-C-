@@ -18,4 +18,6 @@ private:
 	std::vector<GameObject*> added, removed;
 };
 
+extern Session ses;
+
 #endif

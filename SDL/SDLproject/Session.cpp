@@ -28,7 +28,7 @@ void Session::run() {
     //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 
@@ -36,6 +36,7 @@ void Session::run() {
     bool quit = false;
     //bool drag = false;
     while (!quit){
+		const Uint8* held = SDL_GetKeyboardState(NULL);
         while (SDL_PollEvent(&e)){
             if (e.type == SDL_QUIT){
                 quit = true;
@@ -114,4 +115,6 @@ Session::~Session() {
     for (GameObject* c : objects)
         delete c;
 }
+
+Session ses;
 

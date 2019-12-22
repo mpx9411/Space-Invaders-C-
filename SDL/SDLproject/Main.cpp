@@ -73,8 +73,7 @@ Player* player;
 
 int main(int argc, char* argv[])
 {
-	Session ses;
-	player= Player::getInstance(0,0,100,100,"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png");
+	player = Player::getInstance(0,0,100,100,"/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png");
 	ses.add(player);
 
 	//Engine* eng = new Engine();

@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "Engine.h"
 #include <iostream>
+#include "Bullet.h"
+#include "Session.h"
 using namespace std;
 
 Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, w, h}{
@@ -26,6 +28,11 @@ void Player::draw() const {
 
 void Player::tick() {
 
+}
+
+void Player::shootB() {
+	Bullet* bullet = Bullet::getInstance(this->getRect().x+30, this->getRect().y+30, 30, 30, "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png");
+	ses.add(bullet);
 }
 
 Player::~Player() {
@@ -54,7 +61,9 @@ void Player::keyPressed(const SDL_Event& e) {
             setXY(getRect().x-10,getRect().y);
             //cout << "Change x-";
             break;
-        //TODO case SDLK_SPACE
+		case SDLK_SPACE:
+			shootB();
+			break;
     }
     //cout<<"pos för rect. Y: " << playerRect.y << ", X: " << playerRect.x;
 }
