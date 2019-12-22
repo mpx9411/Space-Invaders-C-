@@ -3,6 +3,16 @@
 #include "Engine.h"
 
 Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, h, w}{
+
+    /* Elsa */
+    path = "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/bullet.png";
+
+    /* Sina */
+    //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/bullet.png";
+
+    /* Magnus */
+    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png";
+
 	bTx = IMG_LoadTexture(eng.getRen(), path);
 }
 

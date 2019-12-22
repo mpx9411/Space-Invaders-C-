@@ -12,7 +12,11 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
-    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
+    path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
+
+    /* Magnus */
+    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 
 }
@@ -31,7 +35,8 @@ void Player::tick() {
 }
 
 void Player::shootB() {
-	Bullet* bullet = Bullet::getInstance(this->getRect().x + 30, this->getRect().y + 30, 30, 30, "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png");
+
+	Bullet* bullet = Bullet::getInstance(this->getRect().x + 30, this->getRect().y + 30, 30, 30, "");
 	ses.add(bullet);
 }
 
