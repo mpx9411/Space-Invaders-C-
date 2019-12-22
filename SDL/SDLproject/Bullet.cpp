@@ -5,7 +5,7 @@
 Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, h, w}{
 
     /* Elsa */
-    path = "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/bullet.png";
+    //path = "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/bullet.png";
 
     /* Sina */
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/bullet.png";
