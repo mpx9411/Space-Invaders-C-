@@ -7,6 +7,8 @@ using namespace std;
 
 #define FPS 60
 
+
+
 Session::Session(){
 
 }
@@ -31,13 +33,13 @@ void Session::run() {
     SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
-
+	Uint32 tickInterval = 1000 / FPS;
     SDL_Event e;
     bool quit = false;
     //bool drag = false;
     while (!quit){
-		const Uint8* held = SDL_GetKeyboardState(NULL);
         while (SDL_PollEvent(&e)){
+			nextTick = SDL_GetTicks() + tickInterval;
             if (e.type == SDL_QUIT){
                 quit = true;
             }
@@ -47,12 +49,16 @@ void Session::run() {
             }
 
         }
-
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
+		for (GameObject* c : objects)
+			c->tick();
         for (GameObject* c : objects)
             c->draw();
         SDL_RenderPresent(eng.getRen());
+		int delay = nextTick - SDL_GetTicks();
+		if (delay > 0)
+			SDL_Delay(delay);
     }
 
 

@@ -31,7 +31,7 @@ void Player::tick() {
 }
 
 void Player::shootB() {
-	Bullet* bullet = Bullet::getInstance(this->getRect().x+30, this->getRect().y+30, 30, 30, "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png");
+	Bullet* bullet = Bullet::getInstance(this->getRect().x + 30, this->getRect().y + 30, 30, 30, "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png");
 	ses.add(bullet);
 }
 

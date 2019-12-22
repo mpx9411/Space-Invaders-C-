@@ -16,7 +16,7 @@ void Bullet::draw() const {
 }
 
 void Bullet::tick() {
-	
+	setXY(getRect().x, getRect().y - 1);
 }
 
 Bullet::~Bullet() {

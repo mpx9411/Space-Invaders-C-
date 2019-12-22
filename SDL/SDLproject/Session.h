@@ -16,6 +16,8 @@ public:
 private:
 	std::vector<GameObject*> objects;
 	std::vector<GameObject*> added, removed;
+	Uint32 tickInterval;
+	Uint32 nextTick;
 };
 
 extern Session ses;
