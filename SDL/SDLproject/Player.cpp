@@ -23,7 +23,7 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
      * fixing the position of the player and the texture
      */
     SDL_Surface* pSurf = IMG_Load(path);
-    setXY((eng.getWinW()-(pSurf->w))/2,(eng.getWinH()-(pSurf->h)*2));
+    setXY((eng.getWinW()-(pSurf->w))/2,(eng.getWinH()-(pSurf->h)*2)-10);
 
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 

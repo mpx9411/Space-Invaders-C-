@@ -73,6 +73,8 @@ Player* player;
 
 int main(int argc, char* argv[])
 {
+    //TODO Don't forget to choose your ABSOLUTE path in these classes: Bullet, player, Session.
+
 	player = Player::getInstance(0,0,100,100,"");
 	ses.add(player);
 
