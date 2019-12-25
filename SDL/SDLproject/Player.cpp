@@ -8,6 +8,8 @@ using namespace std;
 
 Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, w, h}{
 
+    //TODO Choose your ABSOLUTE path plz
+
     /* Sina */
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
@@ -16,6 +18,12 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
 
     /* Magnus */
     //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+
+    /**
+     * fixing the position of the player and the texture
+     */
+    SDL_Surface* pSurf = IMG_Load(path);
+    setXY((eng.getWinW()-(pSurf->w))/2,(eng.getWinH()-(pSurf->h)*2));
 
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 

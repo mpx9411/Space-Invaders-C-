@@ -14,6 +14,7 @@ Engine::Engine(){
             w, h, // window's length and height in pixels
             0);
     ren = SDL_CreateRenderer(window, -1, 0);
+    SDL_GetWindowSize(window, &width, &height);
 }
 
 void Engine::start() {
@@ -119,4 +120,12 @@ SDL_Renderer* Engine::getRen() const{
      SDL_Quit();
 }
 
- Engine eng;
+int Engine::getWinH() const {
+    return height;
+}
+
+int Engine::getWinW() const {
+    return width;
+}
+
+Engine eng;

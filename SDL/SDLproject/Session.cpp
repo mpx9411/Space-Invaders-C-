@@ -27,6 +27,7 @@ void Session::run() {
 	 * Background
 	 */
 
+    //TODO Choose your ABSOLUTE path plz
 
     /* ELSA */
     //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
