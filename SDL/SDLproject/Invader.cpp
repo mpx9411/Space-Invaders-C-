@@ -38,7 +38,7 @@ void Invader::tick() {
     if(getRect().y % 2 ==0) // invader is going to right
     {
         if(getRect().x==eng.getWinW()) //we are going down!
-            setXY(getRect().x,getRect().y+11);
+            setXY(getRect().x,getRect().y+31);
         else
             setXY(getRect().x+1,getRect().y);
 
@@ -46,7 +46,7 @@ void Invader::tick() {
     else{ // invader is going to left
 
         if(getRect().x==0) //we are going down!
-            setXY(getRect().x,getRect().y+11);
+            setXY(getRect().x,getRect().y+31);
         else
             setXY(getRect().x-1,getRect().y);
     }

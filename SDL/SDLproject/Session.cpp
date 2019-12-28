@@ -57,10 +57,18 @@ void Session::run() {
     while (!quit){
 
         while(!once) {
-            Invader *inv(Invader::getInstance(10, 0, 40, 30));
+            vector<Invader*> v1;
+            for(int i=0;i<=15;i++){
+                Invader *inv(Invader::getInstance(10+(i*50), 0, 40, 30));
+                v1.push_back(inv);
+            }
 
-            added.push_back(inv);
-            ses.add(inv);
+
+            for(Invader* inv : v1){
+                added.push_back(inv);
+                ses.add(inv);
+            }
+
             once =true;
         }
 
