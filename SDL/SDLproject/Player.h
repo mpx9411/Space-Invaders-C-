@@ -14,7 +14,7 @@ public:
 
 	void draw() const;
 	void tick();
-	void keyPressed(const SDL_Event& event);
+	void keyPressed(const SDL_Event& e);
      //void keySpace(const SDL_Event& event);
 
 	~Player();

@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "SDL.h"
 #include "Player.h"
+#include "Invader.h"
 #include "SDL_image.h"
 
 Engine::Engine(){

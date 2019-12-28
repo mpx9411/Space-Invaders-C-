@@ -11,13 +11,13 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //TODO Choose your ABSOLUTE path plz
 
     /* Sina */
-    //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
+    path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
     //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Magnus */
-    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
 
     /**
      * fixing the position of the player and the texture
@@ -54,31 +54,30 @@ Player::~Player() {
 }
 
 void Player::keyPressed(const SDL_Event& e) {
-    SDL_Rect playerRect = getRect();
-    //cout<< playerRect.h;
+
     switch (e.key.keysym.sym) {
         case SDLK_UP:
             setXY(getRect().x,getRect().y-10);
-            //cout<< GameObject::getRect().y << "\n";
+
             break;
         case SDLK_DOWN:
             setXY(getRect().x,getRect().y+10);
-            //cout<< GameObject::getRect().y << "\n";
+
             break;
         case SDLK_RIGHT:
             //cout << playerRect.h ;
             setXY(getRect().x+10,getRect().y);
-           // cout << " : " << playerRect.h << "\n" ;
+
             break;
         case SDLK_LEFT:
             setXY(getRect().x-10,getRect().y);
-            //cout << "Change x-";
+
             break;
 		case SDLK_SPACE:
 			ses.addBullet();
 			break;
     }
-    //cout<<"pos för rect. Y: " << playerRect.y << ", X: " << playerRect.x;
+
 }
 
 Player* player;
