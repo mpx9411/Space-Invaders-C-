@@ -5,10 +5,11 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "Invader.h"
 #include <memory>
 using namespace std;
 
-#define FPS 60
+#define FPS 500
 
 
 
@@ -18,14 +19,13 @@ Session::Session(){
 
 void Session::add(GameObject* o) {
 	objects.push_back(o);
-    added.push_back(o);
 }
 
 void Session::remove(GameObject* o) {	
 	removed.push_back(o);
 }
 void Session::addBullet() {
-	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x + 30, player->getRect().y + 30, 30, 30, "");
+	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x + 20, player->getRect().y + 30, 30, 30, "");
 	Bullet& bObj = *bullet;
 	storage.push_back(bullet);
 }
@@ -46,8 +46,6 @@ void Session::run() {
 
     /* Magnus */
     SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
-
-
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 	Uint32 tickInterval = 1000 / FPS;
@@ -55,6 +53,7 @@ void Session::run() {
     bool quit = false;
     //bool drag = false;
     while (!quit){
+		Uint32 time = SDL_GetTicks();
         while (SDL_PollEvent(&e)){
 			nextTick = SDL_GetTicks() + tickInterval;
             if (e.type == SDL_QUIT){
@@ -66,6 +65,14 @@ void Session::run() {
             }
 
         }
+		if ((SDL_GetTicks() / 1000) % 4 == 0){ 
+			for(int i = 0; i <= 10; i++){
+				Invader* inv(Invader::getInstance(10 + (60 * i), 0, 40, 30));
+				added.push_back(inv);
+				ses.add(inv);
+			}
+		}
+			
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
 		for (GameObject* c : objects)
@@ -77,9 +84,10 @@ void Session::run() {
 			b->draw();
 		}
         SDL_RenderPresent(eng.getRen());
-		int delay = nextTick - SDL_GetTicks();
-		if (delay > 0)
-			SDL_Delay(delay);
+		if (tickInterval > (SDL_GetTicks() - time))
+		{
+			SDL_Delay(tickInterval - (SDL_GetTicks() - time)); //SDL_Delay pauses the execution.
+		}
     }
 
 
