@@ -17,7 +17,7 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Magnus */
-    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
 
     /**
      * fixing the position of the player and the texture
@@ -42,11 +42,11 @@ void Player::tick() {
 
 }
 
-void Player::shootB() {
+/*void Player::shootB() {
 
 	Bullet* bullet = Bullet::getInstance(this->getRect().x + 30, this->getRect().y + 30, 30, 30, "");
 	ses.add(bullet);
-}
+}*/
 
 Player::~Player() {
     SDL_DestroyTexture(pTx);
@@ -75,13 +75,13 @@ void Player::keyPressed(const SDL_Event& e) {
             //cout << "Change x-";
             break;
 		case SDLK_SPACE:
-			shootB();
+			ses.addBullet();
 			break;
     }
     //cout<<"pos för rect. Y: " << playerRect.y << ", X: " << playerRect.x;
 }
 
-
+Player* player;
 
 /*void Player::keySpace(const SDL_Event &event) {
     GameObject::keySpace(event);

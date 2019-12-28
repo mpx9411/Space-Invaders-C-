@@ -3,6 +3,9 @@
 #include "SDL_image.h"
 #include "Engine.h"
 #include "GameObject.h"
+#include "Player.h"
+#include "Bullet.h"
+#include <memory>
 using namespace std;
 
 #define FPS 60
@@ -21,6 +24,11 @@ void Session::add(GameObject* o) {
 void Session::remove(GameObject* o) {	
 	removed.push_back(o);
 }
+void Session::addBullet() {
+	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x + 30, player->getRect().y + 30, 30, 30, "");
+	Bullet& bObj = *bullet;
+	storage.push_back(bullet);
+}
 void Session::run() {
 
     /**
@@ -37,7 +45,7 @@ void Session::run() {
 
 
     /* Magnus */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
 
 
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
@@ -64,6 +72,10 @@ void Session::run() {
 			c->tick();
         for (GameObject* c : objects)
             c->draw();
+		for (shared_ptr<Bullet> b : storage) {
+			b->tick();
+			b->draw();
+		}
         SDL_RenderPresent(eng.getRen());
 		int delay = nextTick - SDL_GetTicks();
 		if (delay > 0)

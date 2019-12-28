@@ -24,6 +24,7 @@ protected:
     bool moving = false;
 	void shootB();
 };
+extern Player* player;
 
 #endif
 

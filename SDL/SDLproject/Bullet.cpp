@@ -1,6 +1,7 @@
 #include <SDL_image.h>
 #include "Bullet.h"
 #include "Engine.h"
+#include <memory>
 
 Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, h, w}{
 
@@ -13,13 +14,14 @@ Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, 
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/bullet.png";
 
     /* Magnus */
-    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png";
+    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png";
 
 	bTx = IMG_LoadTexture(eng.getRen(), path);
 }
 
-Bullet* Bullet::getInstance(int x, int y, int h, int w, const char* path) {
-	return new Bullet(x, y, h, w, path);
+shared_ptr<Bullet> Bullet::getInstance(int x, int y, int h, int w, const char* path) {
+	shared_ptr<Bullet> bullet (new Bullet(x, y, h, w, path));
+	return bullet;
 }
 
 void Bullet::draw() const {
