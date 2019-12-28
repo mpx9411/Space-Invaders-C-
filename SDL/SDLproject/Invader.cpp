@@ -34,6 +34,7 @@ void Invader::draw() const {
 }
 
 void Invader::tick() {
+
     if(getRect().y % 2 ==0) // invader is going to right
     {
         if(getRect().x==eng.getWinW()) //we are going down!

@@ -7,6 +7,7 @@
 #include "Bullet.h"
 #include "Invader.h"
 #include <memory>
+#include <iostream>
 using namespace std;
 
 #define FPS 500
@@ -52,6 +53,7 @@ void Session::run() {
     SDL_Event e;
     bool quit = false;
     bool once = false;
+    int varv =0;
     while (!quit){
 
         while(!once) {
@@ -85,8 +87,8 @@ void Session::run() {
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
 		for (GameObject* c : objects){
-            //if((SDL_GetTicks() / 1000) % 4 == 0)
-		    c->tick();
+            if(varv%4==0)
+		        c->tick();
 		}
         for (GameObject* c : objects)
             c->draw();
@@ -99,6 +101,7 @@ void Session::run() {
 		{
 			SDL_Delay(tickInterval - (SDL_GetTicks() - time)); //SDL_Delay pauses the execution.
 		}
+		varv++;
     }
 
 

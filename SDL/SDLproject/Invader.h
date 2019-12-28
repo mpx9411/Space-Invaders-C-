@@ -16,6 +16,7 @@ public:
 protected:
 	Invader (int x, int y, int w, int h);
 	SDL_Texture* iTx;
+
 };
 
 #endif
