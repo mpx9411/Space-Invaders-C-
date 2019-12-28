@@ -71,7 +71,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    //TODO Don't forget to choose your ABSOLUTE path in these classes: Bullet, player, Session.
+    //TODO Don't forget to choose your ABSOLUTE path in these classes: Bullet, player, Session, Invader
 
 	player = Player::getInstance(0,0,50,50,"");
 	ses.add(player);

@@ -41,19 +41,28 @@ void Session::run() {
     //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
     /* Magnus */
-    SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 	Uint32 tickInterval = 1000 / FPS;
     SDL_Event e;
     bool quit = false;
-    //bool drag = false;
+    bool once = false;
     while (!quit){
-		Uint32 time = SDL_GetTicks();
+
+        while(!once) {
+            Invader *inv(Invader::getInstance(10, 0, 40, 30));
+
+            added.push_back(inv);
+            ses.add(inv);
+            once =true;
+        }
+
+        Uint32 time = SDL_GetTicks();
         while (SDL_PollEvent(&e)){
 			nextTick = SDL_GetTicks() + tickInterval;
             if (e.type == SDL_QUIT){
@@ -65,18 +74,20 @@ void Session::run() {
             }
 
         }
-		if ((SDL_GetTicks() / 1000) % 4 == 0){ 
+		/*if ((SDL_GetTicks() / 1000) % 4 == 0){
 			for(int i = 0; i <= 10; i++){
 				Invader* inv(Invader::getInstance(10 + (60 * i), 0, 40, 30));
 				added.push_back(inv);
 				ses.add(inv);
 			}
-		}
+		}*/
 			
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
-		for (GameObject* c : objects)
-			c->tick();
+		for (GameObject* c : objects){
+            //if((SDL_GetTicks() / 1000) % 4 == 0)
+		    c->tick();
+		}
         for (GameObject* c : objects)
             c->draw();
 		for (shared_ptr<Bullet> b : storage) {
