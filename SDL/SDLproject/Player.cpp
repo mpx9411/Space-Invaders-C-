@@ -9,7 +9,7 @@ using namespace std;
 
 Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, w, h}{
 
-    //TODO Choose your ABSOLUTE path plz
+    //TODO Choose your ABSOLUTE path plz (1 / 2)
 
     /* Sina */
     path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
@@ -56,7 +56,17 @@ Player::~Player() {
 
 void Player::keyPressed(const SDL_Event& e) {
     Mix_OpenAudio(22050, AUDIO_S16SYS, 2,4096);
+
+    //TODO Choose your ABSOLUTE path plz (2 / 2)
+
+    /* Sina */
     Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+
+    /* Elsa */
+    //Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+
+    /* Magnus */
+    //Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
         case SDLK_UP:
