@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Engine.h"
 #include <iostream>
+#include <SDL_mixer.h>
 #include "Bullet.h"
 #include "Session.h"
 using namespace std;
@@ -54,6 +55,8 @@ Player::~Player() {
 }
 
 void Player::keyPressed(const SDL_Event& e) {
+    Mix_OpenAudio(22050, AUDIO_S16SYS, 2,4096);
+    Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
         case SDLK_UP:
@@ -74,6 +77,7 @@ void Player::keyPressed(const SDL_Event& e) {
 
             break;
 		case SDLK_SPACE:
+            Mix_PlayChannel(-1,pew,0);
 			ses.addBullet();
 			break;
     }

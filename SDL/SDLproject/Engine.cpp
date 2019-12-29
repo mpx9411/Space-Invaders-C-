@@ -9,6 +9,7 @@ Engine::Engine(){
     int w=900;
     int h=600;
     SDL_Init(SDL_INIT_EVERYTHING);
+
     window = SDL_CreateWindow(
             "SPACE INVADER", //TITLE
             100, 100, // coordinates on the screen, in pixels, of the window's upper left corner
