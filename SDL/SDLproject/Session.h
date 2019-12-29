@@ -14,6 +14,7 @@ public:
 	void remove(GameObject* o);
 	void addBullet();
 	void run();
+
 	~Session();
 private:
 	std::vector<GameObject*> objects;
@@ -21,6 +22,9 @@ private:
 	std::vector<shared_ptr<Bullet>> storage;
 	Uint32 tickInterval;
 	Uint32 nextTick;
+
+
+
 };
 
 extern Session ses;
