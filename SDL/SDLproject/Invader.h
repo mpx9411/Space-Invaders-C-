@@ -8,14 +8,18 @@
 
 class Invader : public GameObject {
 public:
-	static Invader* getInstance(int x, int y, int w, int h);
+	static Invader* getInstance(int x, int y, int w, int h,int type);
 	void draw() const;
 	void tick();
 
+
 	~Invader();
 protected:
-	Invader (int x, int y, int w, int h);
+	Invader (int x, int y, int w, int h,int type);
 	SDL_Texture* iTx;
+
+    int right = 20;
+    int left = 0;
 
 };
 

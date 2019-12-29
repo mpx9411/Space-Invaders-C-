@@ -58,13 +58,28 @@ void Session::run() {
     int varv =0;
     while (!quit){
 
+        /**
+         * adding invaders once
+         */
+        vector<Invader*> v1;
         while(!once) {
-            vector<Invader*> v1;
-            for(int i=0;i<=15;i++){
-                Invader *inv(Invader::getInstance(10+(i*50), 0, 40, 30));
-                v1.push_back(inv);
+
+            for(int i=0;i<=30;i++){
+                if(i%3==0) {
+                    Invader *inv(Invader::getInstance(10 + (i * 50), 0, 40, 30, 1));
+                    v1.push_back(inv);
+
+                }if(i%3==1) {
+                    Invader *inv(Invader::getInstance( (i * 50), 31, 50, 40, 2));
+                    v1.push_back(inv);
+                }if (i%3==2){
+                    Invader *inv(Invader::getInstance( (i * 50), 62, 45, 35, 3));
+                    v1.push_back(inv);
+                }
             }
 
+            Invader *inv3(Invader::getInstance( 10, 62, 45, 35, 3));
+            v1.push_back(inv3);
 
             for(Invader* inv : v1){
                 added.push_back(inv);
@@ -74,6 +89,9 @@ void Session::run() {
             once =true;
         }
 
+        /**
+         * SDL EVENTs
+         */
         Uint32 time = SDL_GetTicks();
         while (SDL_PollEvent(&e)){
 			nextTick = SDL_GetTicks() + tickInterval;
@@ -97,9 +115,14 @@ void Session::run() {
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
 		for (GameObject* c : objects){
-            if(varv%4==0)
-		        c->tick();
+            if(varv%8==0){
+                    c->tick();
+                }
+
+
 		}
+
+
         for (GameObject* c : objects)
             c->draw();
 		for (shared_ptr<Bullet> b : storage) {
@@ -174,6 +197,10 @@ Session::~Session() {
     for (GameObject* c : objects)
         delete c;
 }
+
+
+
+
 
 Session ses;
 
