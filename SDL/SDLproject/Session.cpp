@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Invader.h"
+#include "Collider.h"
 #include <memory>
 #include <iostream>
 using namespace std;
@@ -43,12 +44,12 @@ void Session::run() {
     //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
 
     /* Magnus */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 	Uint32 tickInterval = 1000 / FPS;
@@ -115,14 +116,13 @@ void Session::run() {
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
 		for (GameObject* c : objects){
-            if(varv%8==0){
-                    c->tick();
-                }
-
-
+			if (varv % 8 == 0) {
+				c->tick();
+				if (collider->isCollision(c, c->collisionSurface())) {
+					
+				}
+			}
 		}
-
-
         for (GameObject* c : objects)
             c->draw();
 		for (shared_ptr<Bullet> b : storage) {
