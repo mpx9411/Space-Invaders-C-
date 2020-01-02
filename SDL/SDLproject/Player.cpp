@@ -12,20 +12,20 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //TODO Choose your ABSOLUTE path plz (1 / 2)
 
     /* Sina */
-    //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
+    path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
     //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Magnus */
-    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
 
     /**
      * fixing the position of the player and the texture
      */
     SDL_Surface* pSurf = IMG_Load(path);
     setXY((eng.getWinW()-(pSurf->w))/2,(eng.getWinH()-(pSurf->h)*2)-10);
-	coor = collisionSurface();
+	//coor = collisionSurface();
 
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 
@@ -61,13 +61,13 @@ void Player::keyPressed(const SDL_Event& e) {
     //TODO Choose your ABSOLUTE path plz (2 / 2)
 
     /* Sina */
-    //Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Elsa */
     //Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Magnus */
-    Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    //Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
         case SDLK_UP:

@@ -18,7 +18,7 @@ public:
 	virtual void tick() = 0;
     GameObject(const GameObject&) = delete;
     const GameObject& operator=(const GameObject&) = delete;
-	vector<pair<int, int>> collisionSurface();
+	//vector<pair<int, int>> collisionSurface();
 
 protected:
 	GameObject(int x, int y, int w, int h);

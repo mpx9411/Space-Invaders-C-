@@ -16,7 +16,7 @@ void GameObject::setXY(int x, int y) {
     rect.x = x;
     rect.y = y;
 }
-
+/*
 vector<pair<int, int>> GameObject::collisionSurface()
 {
 	for (int i = rect.x; i <= rect.x + rect.w; i++) {
@@ -30,3 +30,4 @@ vector<pair<int, int>> GameObject::collisionSurface()
 
 	return coor;
 }
+ */

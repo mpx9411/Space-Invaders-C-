@@ -10,6 +10,7 @@
 #include "Collider.h"
 #include <memory>
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 #define FPS 500
@@ -21,7 +22,10 @@ Session::Session(){
 }
 
 void Session::add(GameObject* o) {
-	objects.push_back(o);
+
+    objects.push_back(o);
+	added.push_back(o);
+
 }
 
 void Session::remove(GameObject* o) {	
@@ -29,8 +33,9 @@ void Session::remove(GameObject* o) {
 }
 void Session::addBullet() {
 	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x + 20, player->getRect().y + 30, 30, 30, "");
-	Bullet& bObj = *bullet;
+	Bullet& bObj = *bullet; //what does this do?? *Sina*
 	storage.push_back(bullet);
+
 }
 void Session::run() {
 
@@ -44,12 +49,12 @@ void Session::run() {
     //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
 
     /* Magnus */
-    SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
+   // SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 	Uint32 tickInterval = 1000 / FPS;
@@ -57,8 +62,13 @@ void Session::run() {
     bool quit = false;
     bool once = false;
     int varv =0;
-    while (!quit){
 
+    /**
+     * game loop
+     */
+
+    while (!quit){
+        bool collision = false;
         /**
          * adding invaders once
          */
@@ -83,7 +93,8 @@ void Session::run() {
             v1.push_back(inv3);
 
             for(Invader* inv : v1){
-                added.push_back(inv);
+                //added.push_back(inv);
+                //objects.push_back(inv);
                 ses.add(inv);
             }
 
@@ -112,15 +123,48 @@ void Session::run() {
 				ses.add(inv);
 			}
 		}*/
-			
+
+			/**
+			 * Rendering
+			 */
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
+
+        /**
+         * checking for collision.
+         */
+
+        for(int i =0; i<objects.size();i++){
+            if(Invader *invader =dynamic_cast<Invader *> (objects[i])){
+                for(shared_ptr<Bullet> bullet : storage){
+
+
+                    if(abs(invader->getRect().x - bullet->getRect().x)<=15 && abs(invader->getRect().y - bullet->getRect().y)<=15 ){
+                        cout<<"Boom \n";
+                        collision = true;
+                        invader->kill();
+                    }
+
+                }
+
+                //TODO försök att sätta spanet till rektangels bredd...
+                //TODO ta bort invader från object vector(inte bara att göra den osynlig)
+                //TODO invader ska skjuta tillbaka
+                //TODO Deklarera Health variabel för invader och player för att räkna antal träff
+                //TODO tänk på en animation/ljud när invader/player dör
+
+            }
+
+
+        }
+
 		for (GameObject* c : objects){
 			if (varv % 8 == 0) {
 				c->tick();
-				if (collider->isCollision(c, c->collisionSurface())) {
+
+				//if (collider->isCollision(c, c->collisionSurface())) {
 					
-				}
+				//}
 			}
 		}
         for (GameObject* c : objects)
@@ -194,8 +238,14 @@ void Session::run() {
 }
 
 Session::~Session() {
-    for (GameObject* c : objects)
-        delete c;
+    added.clear();
+
+    //for (GameObject* c : objects)
+        //delete c;
+    objects.clear();
+    storage.clear();
+
+
 }
 
 

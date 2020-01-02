@@ -15,13 +15,13 @@ Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
 
     if (type == 1){
         /* Sina */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader.png");
 
     /* Elsa */
     //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
 
     /* Magnus */
-    iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
+    //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
     }if (type == 2){
         /* Sina */
         iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader2.png");
@@ -30,7 +30,7 @@ Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
 
         /* Magnus */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
     }if (type == 3){
         /* Sina */
         iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader3.png");
@@ -39,11 +39,11 @@ Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
 
         /* Magnus */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
     }
 
     setXY(x, y);
-	coor = collisionSurface();
+	//coor = collisionSurface();
 
 }
 
@@ -52,8 +52,10 @@ Invader* Invader::getInstance(int x, int y, int w, int h,int t) {
 }
 
 void Invader::draw() const {
-	SDL_Rect iRect = getRect();
-	SDL_RenderCopy(eng.getRen(), iTx, NULL, &iRect);
+	if(alive) {
+        SDL_Rect iRect = getRect();
+        SDL_RenderCopy(eng.getRen(), iTx, NULL, &iRect);
+    }
 }
 
 void Invader::tick() {
@@ -101,6 +103,14 @@ void Invader::tick() {
         setXY(getRect().x - 1, getRect().y);
     }
 
+}
+
+void Invader::kill() {
+    alive = false;
+}
+
+bool Invader::isAlive(){
+    return alive;
 }
 
 Invader::~Invader() {

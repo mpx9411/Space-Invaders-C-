@@ -13,6 +13,9 @@ public:
 	bool isCollision(GameObject* o, vector<pair<int, int>> c);
 	GameObject* getFCollider();
 	GameObject* getSCollider();
+
+    virtual ~Collider();
+
 private:
 	vector<pair<GameObject*, vector<pair<int, int>>>> activeObjs;
 };

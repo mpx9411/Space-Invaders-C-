@@ -45,4 +45,8 @@ bool Collider::isCollision(GameObject* o, vector<pair<int, int>> c)
 	return false;
 }
 
+Collider::~Collider() {
+    activeObjs.clear();
+}
+
 Collider* collider;
