@@ -46,10 +46,10 @@ void Session::run() {
     //TODO Choose your ABSOLUTE path plz
 
     /* ELSA */
-    SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
 
@@ -77,19 +77,19 @@ void Session::run() {
 
             for(int i=0;i<=30;i++){
                 if(i%3==0) {
-                    Invader *inv(Invader::getInstance(10 + (i * 50), 0, 40, 30, 1));
+                    Invader *inv(Invader::getInstance(10 + (i * 50), 0, 30, 30, 1));
                     v1.push_back(inv);
 
                 }if(i%3==1) {
-                    Invader *inv(Invader::getInstance( (i * 50), 31, 50, 40, 2));
+                    Invader *inv(Invader::getInstance( (i * 50), 31, 30, 30, 2));
                     v1.push_back(inv);
                 }if (i%3==2){
-                    Invader *inv(Invader::getInstance( (i * 50), 62, 45, 35, 3));
+                    Invader *inv(Invader::getInstance( (i * 50), 62, 30, 30, 3));
                     v1.push_back(inv);
                 }
             }
 
-            Invader *inv3(Invader::getInstance( 10, 62, 45, 35, 3));
+            Invader *inv3(Invader::getInstance( 10, 62, 30, 30, 3));
             v1.push_back(inv3);
 
             for(Invader* inv : v1){
@@ -134,45 +134,42 @@ void Session::run() {
          * checking for collision.
          */
 
-        for(int i =0; i<objects.size();i++){
-            if(Invader *invader =dynamic_cast<Invader *> (objects[i])){
-                for(shared_ptr<Bullet> bullet : storage){
+        handleCollision();
 
-
-                    if(abs(invader->getRect().x - bullet->getRect().x)<=15 && abs(invader->getRect().y - bullet->getRect().y)<=15 ){
-                        cout<<"Boom \n";
-                        collision = true;
-                        invader->kill();
-                    }
-
-                }
-
-                //CHECK försök att sätta spanet till rektangels bredd... CHECK
-                //TODO ta bort invader från object vector(inte bara att göra den osynlig)
-                //TODO invader ska skjuta tillbaka
-                //TODO Deklarera Health variabel för invader och player för att räkna antal träff
-                //TODO tänk på en animation/ljud när invader/player dör
-                //TODO gör att man  inte kan flytta player upp eller ner
-
-            }
-
-
-        }
+        //CHECK försök att sätta spanet till rektangels bredd... CHECK
+        //CHECK ta bort invader från object vector(inte bara att göra den osynlig)
+        //TODO invader ska skjuta tillbaka
+        //CHECK Deklarera Health variabel för invader
+        //CHECK tänk på en animation/ljud när invader dör/träffas
+        // TODO player kan träffas och dö också
+        //CHECK gör att man  inte kan flytta player upp eller ner
+        // CHECK player kan inte gå utanför rutan
+        // CHECK bullet ska försvinna när den går utanför rutan.
+        // TODO ADD GAME OVER AND YOU WON SCREEN/label
+        // TODO Start sida
 
 		for (GameObject* c : objects){
-			if (varv % 8 == 0) {
-				c->tick();
 
-				//if (collider->isCollision(c, c->collisionSurface())) {
-					
-				//}
-			}
+            if(Invader *invader =dynamic_cast<Invader *> (c)){
+                if (varv % (5+invader->getHealth()) == 0) {
+                    c->tick();
+
+
+                }
+            }
+
 		}
         for (GameObject* c : objects)
             c->draw();
-		for (shared_ptr<Bullet> b : storage) {
-			b->tick();
-			b->draw();
+		for (int j =0; j<storage.size();j++) {
+            storage[j]->tick();
+			if(storage[j]->isOutOfBounds()){
+                removedBullets.push_back(storage[j]);
+
+                storage.erase(storage.begin() + j);
+			}else
+
+            storage[j]->draw();
 		}
         SDL_RenderPresent(eng.getRen());
 		if (tickInterval > (SDL_GetTicks() - time))
@@ -183,59 +180,7 @@ void Session::run() {
     }
 
 
-    /*
-    SDL_SetRenderDrawColor(eng.getRen(), 0, 0, 0, 0);
-	bool keepGoing = true;
 
-	Uint32 tickInterval = 1000 / FPS;
-
-	while (keepGoing) {
-		Uint32 nextTick = SDL_GetTicks() + tickInterval;
-		SDL_Event event;
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-			case SDL_QUIT: keepGoing = false; break;
-			case SDLK_RIGHT:
-				for (GameObject* o : objects)
-					o->keyRight(event);
-				break;
-			case SDLK_LEFT:
-				for (GameObject* o : objects)
-					o->keyLeft(event);
-				break;
-			case SDLK_SPACE:
-				for (GameObject* o : objects)
-					o->keySpace(event);
-
-			}
-		}
-
-		for (GameObject* o : objects)
-			o->tick();
-
-		for (GameObject* o : added) 
-			objects.push_back(o);
-		added.clear();
-		
-		for(GameObject* o : removed)
-			for(vector<GameObject*>::iterator i = objects.begin(); i != objects.end();)
-				if (*i == o) {
-					i = objects.erase(i);
-				}
-				else
-					i++;
-		removed.clear();
-
-		SDL_RenderClear(eng.getRen());
-		for (GameObject* o : objects)
-			o->draw();
-		SDL_RenderPresent(eng.getRen());
-
-		int delay = nextTick - SDL_GetTicks();
-		if (delay > 0)
-			SDL_Delay(delay);
-	}
-     */
 }
 
 Session::~Session() {
@@ -245,12 +190,53 @@ Session::~Session() {
         //delete c;
     objects.clear();
     storage.clear();
+    removed.clear();
+    removedBullets.clear();
 
 
 }
 
+void Session::handleCollision() {
 
 
+    /**
+     * first checking in the new collisions in all of invaders
+     */
+    for(int i =0; i<objects.size();i++){
+        if(Invader *invader =dynamic_cast<Invader *> (objects[i])){
+            for(int j =0; j<storage.size();j++){
+
+
+                if(abs(invader->getRect().x - storage[j]->getRect().x)<=15 && invader->getRect().y == storage[j]->getRect().y ){
+                    cout<<"Boom \n";
+                    collision = true;
+                    invader->hit();
+                    invader->reactToCollision();
+
+                    if(!invader->isAlive()){
+                        //moving it to the removed vector.
+                        removed.push_back(invader);
+
+                        objects.erase(objects.begin() + i); //not sure tbh
+
+                    }
+                    removedBullets.push_back(storage[j]);
+
+                    storage.erase(storage.begin() + j);
+
+
+                } else{
+                    //DO NOTHING YET
+                }
+
+            }
+
+        }
+
+    }
+
+
+}
 
 
 Session ses;

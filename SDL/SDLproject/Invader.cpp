@@ -13,30 +13,39 @@ Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
 
     //TODO Choose your ABSOLUTE path plz for each invader type!
 
-    if (type == 1){
+    /**
+     * COLORs = type!
+     * 1 == BLUE
+     * 2 == GREEN
+     * 3 == PINK
+     */
+
+    this->type = type;
+
+    if (type == 1){ //
         /* Sina */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue3.png");
 
     /* Elsa */
-    iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
+    //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
 
     /* Magnus */
     //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
     }if (type == 2){
         /* Sina */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader2.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen3.png");
 
         /* Elsa */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
 
         /* Magnus */
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
     }if (type == 3){
         /* Sina */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/Invader3.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink3.png");
 
         /* Elsa */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
 
         /* Magnus */
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
@@ -116,3 +125,102 @@ bool Invader::isAlive(){
 Invader::~Invader() {
 	SDL_DestroyTexture(iTx);
 }
+
+void Invader::hit() {
+    health --;
+
+    if(health==0)
+        kill();
+
+}
+
+void Invader::reactToCollision() {
+
+    switch (health) {
+        case 2:
+            cout<<health<<"\n";
+            if (type == 1) { //
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue2.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
+            }
+            if (type == 2) {
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen2.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
+            }
+            if (type == 3) {
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink2.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
+            }
+
+            break;
+        case 1:
+            cout<<health<<"\n";
+            if (type == 1) { //
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue1.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
+            }
+            if (type == 2) {
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen1.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
+            }
+            if (type == 3) {
+                /* Sina */
+                iTx = IMG_LoadTexture(eng.getRen(),
+                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink1.png");
+
+                /* Elsa */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+
+                /* Magnus */
+                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
+            }
+            break;
+        case 0:
+            cout<<health<<"\n";
+            // die!
+            break;
+
+    }
+
+
+}
+
+int Invader::getHealth() {
+    return health;
+}
+

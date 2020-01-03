@@ -12,10 +12,10 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //TODO Choose your ABSOLUTE path plz (1 / 2)
 
     /* Sina */
-    //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
+    path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
-    path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
+    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Magnus */
     //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
@@ -61,32 +61,37 @@ void Player::keyPressed(const SDL_Event& e) {
     //TODO Choose your ABSOLUTE path plz (2 / 2)
 
     /* Sina */
-    //Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Elsa */
-    Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    //Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Magnus */
     //Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
-        case SDLK_UP:
-            setXY(getRect().x,getRect().y-10);
-
-            break;
-        case SDLK_DOWN:
-            setXY(getRect().x,getRect().y+10);
-
-            break;
-        case SDLK_RIGHT:
+        // up and down removed!
+        case SDLK_RIGHT: {
             //cout << playerRect.h ;
-            setXY(getRect().x+10,getRect().y);
+            int playerX = getRect().x + 10;
+            int playerY = getRect().y;
+            if (!(playerX > (eng.getWinW()-getRect().w)))
+                setXY(playerX, playerY);
+
 
             break;
-        case SDLK_LEFT:
-            setXY(getRect().x-10,getRect().y);
+        }
 
             break;
+        case SDLK_LEFT: {
+            int playerX = getRect().x - 10;
+            int playerY = getRect().y;
+            if(!(playerX<0))
+                setXY(playerX,playerY);
+
+
+            break;
+        }
 		case SDLK_SPACE:
             Mix_PlayChannel(-1,pew,0);
 			ses.addBullet();

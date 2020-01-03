@@ -19,10 +19,11 @@ public:
 private:
 	std::vector<GameObject*> objects;
 	std::vector<GameObject*> added, removed;
-	std::vector<shared_ptr<Bullet>> storage;
+	std::vector<shared_ptr<Bullet>> storage, removedBullets;
 	bool collision = false;
 	Uint32 tickInterval;
 	Uint32 nextTick;
+	void handleCollision();
 
 
 };
