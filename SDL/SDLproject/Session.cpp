@@ -32,7 +32,7 @@ void Session::remove(GameObject* o) {
 	removed.push_back(o);
 }
 void Session::addBullet() {
-	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x + 20, player->getRect().y + 30, 30, 30, "");
+	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x+8, player->getRect().y + 30, 30, 30, "");
 	Bullet& bObj = *bullet; //what does this do?? *Sina*
 	storage.push_back(bullet);
 
@@ -46,10 +46,10 @@ void Session::run() {
     //TODO Choose your ABSOLUTE path plz
 
     /* ELSA */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
 
@@ -147,11 +147,12 @@ void Session::run() {
 
                 }
 
-                //TODO försök att sätta spanet till rektangels bredd...
+                //CHECK försök att sätta spanet till rektangels bredd... CHECK
                 //TODO ta bort invader från object vector(inte bara att göra den osynlig)
                 //TODO invader ska skjuta tillbaka
                 //TODO Deklarera Health variabel för invader och player för att räkna antal träff
                 //TODO tänk på en animation/ljud när invader/player dör
+                //TODO gör att man  inte kan flytta player upp eller ner
 
             }
 

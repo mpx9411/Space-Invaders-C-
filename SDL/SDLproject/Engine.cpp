@@ -20,7 +20,7 @@ Engine::Engine(){
 }
 
 void Engine::start() {
-   /* int w=900;
+    /*int w=900;
     int h=600;
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
@@ -115,6 +115,8 @@ SDL_Rect pRect= {(w-(pSurf -> w))/2,h-((pSurf-> h)),(pSurf -> w), (pSurf-> h)};
 SDL_Renderer* Engine::getRen() const{
 	return ren;
 }
+
+
 
  Engine :: ~Engine() {
      SDL_DestroyWindow(window);
