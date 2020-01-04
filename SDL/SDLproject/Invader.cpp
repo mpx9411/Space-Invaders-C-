@@ -24,28 +24,29 @@ Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
 
     if (type == 1){ //
         /* Sina */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue3.png");
-
-    /* Elsa */
-    //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
-
-    /* Magnus */
-    //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
-    }if (type == 2){
-        /* Sina */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen3.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue3.png");
 
         /* Elsa */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invaderBlue3.png");
+
+        /* Magnus */
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
+
+    }if (type == 2){
+        /* Sina */
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen3.png");
+
+        /* Elsa */
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderGreen3.png");
 
         /* Magnus */
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
     }if (type == 3){
         /* Sina */
-        iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink3.png");
+        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink3.png");
 
         /* Elsa */
-        //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+        iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderPink3.png");
 
         /* Magnus */
         //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
@@ -141,33 +142,30 @@ void Invader::reactToCollision() {
             cout<<health<<"\n";
             if (type == 1) { //
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue2.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue2.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invaderBlue2.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
             }
             if (type == 2) {
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen2.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen2.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderGreen2.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
             }
             if (type == 3) {
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink2.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink2.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderPink2.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");
@@ -178,33 +176,30 @@ void Invader::reactToCollision() {
             cout<<health<<"\n";
             if (type == 1) { //
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue1.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/invaderBlue1.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invaderBlue1.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader.png");
             }
             if (type == 2) {
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen1.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderGreen1.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader2.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderGreen1.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader2.png");
             }
             if (type == 3) {
                 /* Sina */
-                iTx = IMG_LoadTexture(eng.getRen(),
-                                      "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink1.png");
+                //iTx = IMG_LoadTexture(eng.getRen(),"/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/InvaderPink1.png");
 
                 /* Elsa */
-                //iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/invader3.png");
+                iTx = IMG_LoadTexture(eng.getRen(), "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/InvaderPink1.png");
 
                 /* Magnus */
                 //iTx = IMG_LoadTexture(eng.getRen(), "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/invader3.png");

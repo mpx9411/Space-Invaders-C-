@@ -46,10 +46,10 @@ void Session::run() {
     //TODO Choose your ABSOLUTE path plz
 
     /* ELSA */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
+    SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
 
     /* Sina */
-    SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
+    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
 
 
 
