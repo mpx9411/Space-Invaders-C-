@@ -29,20 +29,8 @@ void Collider::addObject(GameObject* o, vector<pair<int, int>> c) {
 	throw collidingObject.first;*/
 //}
 
-bool Collider::isCollision(GameObject* o, vector<pair<int, int>> c)
+bool Collider::isCollision(GameObject* f, GameObject* s)
 {
-
-	for (pair<GameObject*, vector<pair<int, int>>> p : activeObjs) {
-		vector<pair<int, int>> v = (p.second);
-		for (pair<int, int> nO : c) {
-			if (any_of(v.begin(), v.end(), [=](pair<int, int> x) {return x == nO; })) {
-				firstCollider = o;
-				secondCollider = p.first;
-				return true;
-			}
-		}
-	}
-	return false;
 }
 
 Collider::~Collider() {

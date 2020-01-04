@@ -18,6 +18,8 @@ public:
 	virtual void tick() = 0;
     GameObject(const GameObject&) = delete;
     const GameObject& operator=(const GameObject&) = delete;
+	bool tickCondition = true;
+	virtual void collidesWith(GameObject* collidingObject) = 0;
 	//vector<pair<int, int>> collisionSurface();
 
 protected:

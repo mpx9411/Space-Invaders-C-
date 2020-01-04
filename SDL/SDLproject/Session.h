@@ -1,7 +1,6 @@
 #ifndef SESSION_H
 #define SESSION_H
 #include <SDL.h>
-#include "Engine.h"
 #include <vector>
 #include "GameObject.h"
 #include "Bullet.h"
@@ -14,6 +13,9 @@ public:
 	void remove(GameObject* o);
 	void addBullet();
 	void run();
+	const char* getBG();
+	int getFPS();
+	vector<GameObject*> preLoad();
 
 	~Session();
 private:
@@ -24,6 +26,7 @@ private:
 	Uint32 tickInterval;
 	Uint32 nextTick;
 	void handleCollision();
+	vector<GameObject*> startObjects;
 
 
 };

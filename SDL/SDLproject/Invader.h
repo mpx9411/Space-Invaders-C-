@@ -14,15 +14,14 @@ public:
 	void kill();
 	void hit();
     bool isAlive();
-    void reactToCollision();
+	void collidesWith(GameObject* o);
     int getHealth();
-
 
 	~Invader();
 protected:
 	Invader (int x, int y, int w, int h,int type);
 	SDL_Texture* iTx;
-
+	int varv;
     bool alive = true;
     int right = 20;
     int left = 0;

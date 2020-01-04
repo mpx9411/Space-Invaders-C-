@@ -2,7 +2,6 @@
 #include <SDL.h>
 #include "SDL_image.h"
 #include "SDL_mixer.h"
-#include "Engine.h"
 #include "GameObject.h"
 #include "Player.h"
 #include "Bullet.h"
@@ -18,8 +17,13 @@ using namespace std;
 
 
 Session::Session(){
-
+	vector<GameObject*> startObjects;
 }
+
+
+
+
+
 
 void Session::add(GameObject* o) {
 
@@ -38,40 +42,17 @@ void Session::addBullet() {
 
 }
 void Session::run() {
-
-    /**
-	 * Background
-	 */
-
-    //TODO Choose your ABSOLUTE path plz
-
-    /* ELSA */
-    SDL_Surface* bgSurf = IMG_Load("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/background.png");
-
-    /* Sina */
-    //SDL_Surface* bgSurf = IMG_Load("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/background.png");
-
-
-
-    /* Magnus */
-   // SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
+	/*SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);
     SDL_FreeSurface(bgSurf);
 	Uint32 tickInterval = 1000 / FPS;
     SDL_Event e;
-    bool quit = false;
-    bool once = false;
-    int varv =0;
+    bool quit = false;*/
+    //bool once = false;
+    //int varv =0;
 
-    /**
-     * game loop
-     */
-
-    while (!quit){
-        bool collision = false;
-        /**
-         * adding invaders once
-         */
+    /*while (!quit){
+       /* bool collision = false;
         vector<Invader*> v1;
         while(!once) {
 
@@ -93,17 +74,11 @@ void Session::run() {
             v1.push_back(inv3);
 
             for(Invader* inv : v1){
-                //added.push_back(inv);
-                //objects.push_back(inv);
                 ses.add(inv);
             }
 
             once =true;
         }
-
-        /**
-         * SDL EVENTs
-         */
         Uint32 time = SDL_GetTicks();
         while (SDL_PollEvent(&e)){
 			nextTick = SDL_GetTicks() + tickInterval;
@@ -116,37 +91,11 @@ void Session::run() {
             }
 
         }
-		/*if ((SDL_GetTicks() / 1000) % 4 == 0){
-			for(int i = 0; i <= 10; i++){
-				Invader* inv(Invader::getInstance(10 + (60 * i), 0, 40, 30));
-				added.push_back(inv);
-				ses.add(inv);
-			}
-		}*/
-
-			/**
-			 * Rendering
-			 */
+		
         SDL_RenderClear(eng.getRen());
         SDL_RenderCopy(eng.getRen(), bgTex, NULL, NULL);
 
-        /**
-         * checking for collision.
-         */
-
         handleCollision();
-
-        //CHECK försök att sätta spanet till rektangels bredd... CHECK
-        //CHECK ta bort invader från object vector(inte bara att göra den osynlig)
-        //TODO invader ska skjuta tillbaka
-        //CHECK Deklarera Health variabel för invader
-        //CHECK tänk på en animation/ljud när invader dör/träffas
-        // TODO player kan träffas och dö också
-        //CHECK gör att man  inte kan flytta player upp eller ner
-        // CHECK player kan inte gå utanför rutan
-        // CHECK bullet ska försvinna när den går utanför rutan.
-        // TODO ADD GAME OVER AND YOU WON SCREEN/label
-        // TODO Start sida
 
 		for (GameObject* c : objects){
 
@@ -177,17 +126,29 @@ void Session::run() {
 			SDL_Delay(tickInterval - (SDL_GetTicks() - time)); //SDL_Delay pauses the execution.
 		}
 		varv++;
-    }
+    }*/
 
 
 
 }
 
+const char* Session::getBG()
+{
+	return "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png";
+}
+
+int Session::getFPS()
+{
+	return 60;
+}
+
+vector<GameObject*> Session::preLoad()
+{
+	return startObjects;
+}
+
 Session::~Session() {
     added.clear();
-
-    //for (GameObject* c : objects)
-        //delete c;
     objects.clear();
     storage.clear();
     removed.clear();
@@ -197,11 +158,6 @@ Session::~Session() {
 }
 
 void Session::handleCollision() {
-
-
-    /**
-     * first checking in the new collisions in all of invaders
-     */
     for(int i =0; i<objects.size();i++){
         if(Invader *invader =dynamic_cast<Invader *> (objects[i])){
             for(int j =0; j<storage.size();j++){
@@ -211,7 +167,7 @@ void Session::handleCollision() {
                     cout<<"Boom \n";
                     collision = true;
                     invader->hit();
-                    invader->reactToCollision();
+                   // invader->reactToCollision();
 
                     if(!invader->isAlive()){
                         //moving it to the removed vector.

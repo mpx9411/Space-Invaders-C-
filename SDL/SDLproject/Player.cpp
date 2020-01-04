@@ -15,10 +15,10 @@ Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, 
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Elsa */
-    path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
+    //path ="/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/player.png";
 
     /* Magnus */
-    //path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
+    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
 
     /**
      * fixing the position of the player and the texture
@@ -64,10 +64,10 @@ void Player::keyPressed(const SDL_Event& e) {
     //Mix_Chunk* pew = Mix_LoadWAV("/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Elsa */
-    Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    //Mix_Chunk* pew = Mix_LoadWAV("/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     /* Magnus */
-    //Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
+    Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
         // up and down removed!
@@ -99,6 +99,8 @@ void Player::keyPressed(const SDL_Event& e) {
     }
 
 }
+
+void Player::collidesWith(GameObject* o){}
 
 Player* player;
 

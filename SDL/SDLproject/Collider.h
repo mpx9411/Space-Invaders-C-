@@ -10,7 +10,7 @@ class Collider
 public:
 	void addObject(GameObject* o, vector<pair<int, int>> c);
 	GameObject* setObject(GameObject* o, vector<pair<int, int>> c);
-	bool isCollision(GameObject* o, vector<pair<int, int>> c);
+	bool isCollision(GameObject* f, GameObject* s);
 	GameObject* getFCollider();
 	GameObject* getSCollider();
 

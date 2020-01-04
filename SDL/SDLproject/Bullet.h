@@ -11,7 +11,7 @@ public:
 	void draw() const;
 	void tick();
     bool isOutOfBounds();
-
+	void collidesWith(GameObject* o);
 	~Bullet();
 
 protected:

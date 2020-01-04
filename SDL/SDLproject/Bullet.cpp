@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include <memory>
 #include <iostream>
+#include "Invader.h"
 
 using namespace std;
 
@@ -11,13 +12,13 @@ Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, 
     //TODO Choose your ABSOLUTE path plz
 
     /* Elsa */
-    path = "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/bullet.png";
+    //path = "/Users/elsabergman/Documents/DSV/År 3/HT19/CPROG_Inlupp/SDL/Images/bullet.png";
 
     /* Sina */
     //path = "/Users/sina/Desktop/CProg/CPROG_Inlupp/SDL/Images/bullet.png";
 
     /* Magnus */
-//    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png";
+    path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/bullet.png";
 
 	bTx = IMG_LoadTexture(eng.getRen(), path);
 }
@@ -52,4 +53,11 @@ Bullet::~Bullet() {
 
 bool Bullet::isOutOfBounds(){
     return out_of_bounds;
+}
+
+void Bullet::collidesWith(GameObject* o) {
+	if (Invader* invader = dynamic_cast<Invader*> (o)) {
+		dynamic_cast<Invader*> (o);
+		eng.remove(this);
+	}
 }

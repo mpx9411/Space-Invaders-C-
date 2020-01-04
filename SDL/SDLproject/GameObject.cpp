@@ -3,6 +3,8 @@
 #include <utility>
 #include "GameObject.h"
 
+
+
 GameObject::GameObject(int x, int y, int w, int h) :rect{ x, y, w, h } {
 	//HäR ANGES LOCATION
 }
@@ -16,6 +18,7 @@ void GameObject::setXY(int x, int y) {
     rect.x = x;
     rect.y = y;
 }
+
 /*
 vector<pair<int, int>> GameObject::collisionSurface()
 {
