@@ -35,12 +35,12 @@ void Session::add(GameObject* o) {
 void Session::remove(GameObject* o) {	
 	removed.push_back(o);
 }
-void Session::addBullet() {
+/*void Session::addBullet() {
 	std::shared_ptr<Bullet> bullet = Bullet::getInstance(player->getRect().x+8, player->getRect().y + 30, 30, 30, "");
 	Bullet& bObj = *bullet; //what does this do?? *Sina*
 	storage.push_back(bullet);
 
-}
+}*/
 void Session::run() {
 	/*SDL_Surface* bgSurf = IMG_Load("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png");
     SDL_Texture* bgTex = SDL_CreateTextureFromSurface(eng.getRen(), bgSurf);

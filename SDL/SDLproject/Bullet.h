@@ -7,7 +7,7 @@ using namespace std;
 class Bullet : public GameObject{
 
 public:
-	static shared_ptr<Bullet> getInstance(int x, int y, int h, int w, const char* path);
+	static Bullet* getInstance(int x, int y, int h, int w, const char* path);
 	void draw() const;
 	void tick();
     bool isOutOfBounds();

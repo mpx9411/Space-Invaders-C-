@@ -23,8 +23,8 @@ Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, 
 	bTx = IMG_LoadTexture(eng.getRen(), path);
 }
 
-shared_ptr<Bullet> Bullet::getInstance(int x, int y, int h, int w, const char* path) {
-	shared_ptr<Bullet> bullet (new Bullet(x, y, h, w, path));
+Bullet* Bullet::getInstance(int x, int y, int h, int w, const char* path) {
+	Bullet* bullet (new Bullet(x, y, h, w, path));
 	return bullet;
 }
 

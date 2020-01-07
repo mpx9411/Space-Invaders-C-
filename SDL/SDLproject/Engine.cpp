@@ -38,33 +38,6 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 	bool once = false;
 
 	while (!quit) {
-		
-		vector<Invader*> v1;
-		vector<GameObject*> added;
-		while (!once) {
-
-			for (int i = 0; i <= 30; i++) {
-				if (i % 3 == 0) {
-					Invader* inv(Invader::getInstance(10 + (i * 50), 0, 30, 30, 1));
-					v1.push_back(inv);
-
-				}if (i % 3 == 1) {
-					Invader* inv(Invader::getInstance((i * 50), 31, 30, 30, 2));
-					v1.push_back(inv);
-				}if (i % 3 == 2) {
-					Invader* inv(Invader::getInstance((i * 50), 62, 30, 30, 3));
-					v1.push_back(inv);
-				}
-			}
-			Invader* inv3(Invader::getInstance(10, 62, 30, 30, 3));
-			v1.push_back(inv3);
-
-			for (Invader* inv : v1) {
-				eng.add(inv);
-			}
-
-			once = true;
-		}
 			Uint32 time = SDL_GetTicks();
 			while (SDL_PollEvent(&e)) {
 				nextTick = SDL_GetTicks() + tickInterval;
@@ -72,29 +45,30 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 					quit = true;
 				}
 				if (e.type == SDL_KEYDOWN) {
-					for (GameObject* c : objects)
-						c->keyPressed(e);
+						player->keyPressed(e);
 				}
 			}
 
 			SDL_RenderClear(getRen());
 			SDL_RenderCopy(getRen(), bgTex, NULL, NULL);
 
-			for (int i = 0; i < objects.size() - 1; i++) {
+			
+
+			for (GameObject* c : objects)
+				c->tick();
+			for (GameObject* c : objects)
+				c->draw();
+
+			for (int i = 0; i < objects.size(); i++) {
 				for (int j = 1; j < objects.size(); j++) {
-					if (abs(-15 <= objects[i]->getRect().x - objects[j]->getRect().x) <= 15 && -15 <= objects[i]->getRect().y - objects[j]->getRect().y <= 15);
+					if (i != j && abs(objects[i]->getRect().x - objects[j]->getRect().x) <= 15 && objects[i]->getRect().y == objects[j]->getRect().y)
 					objects[i]->collidesWith(objects[j]);
 				}
 			}
 
-			for (GameObject* c : objects) {
-				c->tick();
-			}
-			for (GameObject* c : objects)
-				c->draw();
-
-			for (size_t i = 0; i < removed.size(); ++i) {
-				delete removed[i];
+			for (int i = 0; i < removed.size(); ++i) {
+				GameObject* rem = removed[i];
+				objects.erase(find(objects.begin(), objects.end(), rem));
 			}
 			removed.clear();
 

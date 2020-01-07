@@ -94,7 +94,7 @@ void Player::keyPressed(const SDL_Event& e) {
         }
 		case SDLK_SPACE:
             Mix_PlayChannel(-1,pew,0);
-			ses.addBullet();
+			eng.add(Bullet::getInstance(player->getRect().x + 8, player->getRect().y + 30, 30, 30, ""));
 			break;
     }
 

@@ -122,7 +122,7 @@ void Invader::tick() {
 }
 
 void Invader::kill() {
-    alive = false;
+	eng.remove(this);
 }
 
 bool Invader::isAlive(){
@@ -143,7 +143,7 @@ void Invader::hit() {
 
 void Invader::collidesWith(GameObject* o) {
 	if(Bullet* bullet = dynamic_cast<Bullet*> (o)){
-		eng.remove(o);
+		hit();
 		switch (health) {
 		case 2:
 			cout << health << "\n";
