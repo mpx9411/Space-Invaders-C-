@@ -35,7 +35,6 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 	Uint32 tickInterval = 100 / FPS;
 	SDL_Event e;
 	bool quit = false;
-	bool once = false;
 
 	while (!quit) {
 			Uint32 time = SDL_GetTicks();
