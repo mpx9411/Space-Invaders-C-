@@ -5,21 +5,15 @@
 
 
 
-GameObject::GameObject(int x, int y, int w, int h) :rect{ x, y, w, h } {
-	//HäR ANGES LOCATION
+GameObject::GameObject(int x, int y, int w, int h) : rect{ x, y, w, h } {
+
 }
 
 void GameObject::setWH(int w, int h) {
-    rect.w = w;
-    rect.h = h;
+     
 }
 
-void GameObject::setXY(int x, int y) {
-    rect.x = x;
-    rect.y = y;
-}
-
-/*
+/*	
 vector<pair<int, int>> GameObject::collisionSurface()
 {
 	for (int i = rect.x; i <= rect.x + rect.w; i++) {

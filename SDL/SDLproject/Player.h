@@ -1,13 +1,13 @@
 #ifndef PLAYERH
 #define PLAYER_H
 
-#include "GameObject.h"
+#include "MovingObject.h"
 #include "Engine.h"
 #include "SDL.h"
 #include <string>
 using namespace std;
 
-class Player :	public GameObject{
+class Player :	public MovingObject{
 public:
 	static Player* getInstance(int x, int y, int h, int w, const char *path);
 
@@ -19,11 +19,10 @@ public:
      //void keySpace(const SDL_Event& event);
 
 	~Player();
-protected:
+private:
 	Player(int x, int y, int h, int w, const char *path);
     SDL_Texture* pTx;
     bool moving = false;
-	void shootB();
 };
 extern Player* player;
 

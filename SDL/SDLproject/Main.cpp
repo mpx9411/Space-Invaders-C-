@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "Session.h"
 #include "GameObject.h"
 #include "Engine.h"
 #include "Invader.h"
@@ -25,7 +24,7 @@ int main(int argc, char* argv[])
 		}
 		Invader* inv3(Invader::getInstance(10, 62, 30, 30, 3));
 		eng.add(inv3);
-	eng.add(player);
+	eng.addPlayers(player);
 	eng.start("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/background.png", 500, preLoad);
 	return 0;
 

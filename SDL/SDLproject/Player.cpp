@@ -4,10 +4,9 @@
 #include <iostream>
 #include <SDL_mixer.h>
 #include "Bullet.h"
-#include "Session.h"
 using namespace std;
 
-Player::Player(int x, int y, int w, int h, const char *path) : GameObject{x, y, w, h}{
+Player::Player(int x, int y, int w, int h, const char *path) : MovingObject{x, y, w, h}{
 
     //TODO Choose your ABSOLUTE path plz (1 / 2)
 

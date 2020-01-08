@@ -1,15 +1,15 @@
 #include "Invader.h"
 #include "SDL_image.h"
 #include "Engine.h"
-#include "Session.h"
 #include <iostream>
+#include "Bullet.h"
 
 using namespace std;
 
 
 
 
-Invader::Invader(int x, int y, int w, int h,int type) : GameObject{x, y, w, h} {
+Invader::Invader(int x, int y, int w, int h,int type) : MovingObject{x, y, w, h} {
 
     //TODO Choose your ABSOLUTE path plz for each invader type!
 
@@ -142,7 +142,7 @@ void Invader::hit() {
 }
 
 void Invader::collidesWith(GameObject* o) {
-	if(Bullet* bullet = dynamic_cast<Bullet*> (o)){
+	if (Bullet* bullet = dynamic_cast<Bullet*> (o)) {
 		hit();
 		switch (health) {
 		case 2:
@@ -217,10 +217,8 @@ void Invader::collidesWith(GameObject* o) {
 			// die!
 			break;
 		}
-    }
-
-
-}
+	}
+ }
 
 int Invader::getHealth() {
     return health;

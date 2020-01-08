@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Bullet::Bullet(int x, int y, int h, int w, const char* path) : GameObject{x, y, h, w}{
+Bullet::Bullet(int x, int y, int h, int w, const char* path) : MovingObject{x, y, h, w}{
 
     //TODO Choose your ABSOLUTE path plz
 
@@ -43,6 +43,7 @@ void Bullet::tick() {
     else{
         cout<<"out";
         out_of_bounds= true;
+		eng.remove(this);
 
     }
 }

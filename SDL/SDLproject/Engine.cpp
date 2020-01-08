@@ -4,7 +4,6 @@
 #include "Invader.h"
 #include "SDL_image.h"
 #include "Collider.h"
-#include "Session.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 #include "GameObject.h"
@@ -44,7 +43,8 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 					quit = true;
 				}
 				if (e.type == SDL_KEYDOWN) {
-						player->keyPressed(e);
+					for(GameObject* p: keyPlayers)
+						p->keyPressed(e);
 				}
 			}
 
@@ -82,9 +82,14 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 
 	}
 
+void Engine::addPlayers(GameObject* o)
+{
+	keyPlayers.push_back(o);
+	add(o);
+}
+
 void Engine::add(GameObject* o) {
 	objects.push_back(o);
-	added.push_back(o);
 }
 
 void Engine::remove(GameObject* o) {

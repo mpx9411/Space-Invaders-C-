@@ -12,23 +12,19 @@ public:
 
 
 	virtual ~GameObject(){}
-	vector<pair<int, int>> coor;
 	SDL_Rect getRect() const { return rect; }
 	virtual void draw() const = 0;
 	virtual void tick() = 0;
-    GameObject(const GameObject&) = delete;
     const GameObject& operator=(const GameObject&) = delete;
-	bool tickCondition = true;
 	virtual void collidesWith(GameObject* collidingObject) = 0;
 	//vector<pair<int, int>> collisionSurface();
 
 protected:
+	GameObject(const GameObject&) = delete;
 	GameObject(int x, int y, int w, int h);
 	void setWH(int w, int h);
-	void setXY(int x, int y);
-
-private:
 	SDL_Rect rect;
+private:
 	
 };
 

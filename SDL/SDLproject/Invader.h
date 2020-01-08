@@ -1,12 +1,12 @@
 #ifndef INVADER_H
 #define INVADER_H
 
-#include "GameObject.h"
+#include "MovingObject.h"
 #include "Engine.h"
 #include "SDL.h"
 #include <memory>
 
-class Invader : public GameObject {
+class Invader : public MovingObject {
 public:
 	static Invader* getInstance(int x, int y, int w, int h,int type);
 	void draw() const;
@@ -18,7 +18,7 @@ public:
     int getHealth();
 
 	~Invader();
-protected:
+private:
 	Invader (int x, int y, int w, int h,int type);
 	SDL_Texture* iTx;
 	int varv;

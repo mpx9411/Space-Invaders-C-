@@ -2,7 +2,6 @@
 #define ENGINE_H
 #include "SDL.h"
 #include "GameObject.h"
-#include "Session.h"
 
 
 
@@ -15,6 +14,7 @@ public:
 	int getWinW() const;
 	int getWinH() const;
 	void start(const char* background, const int FPS, vector<GameObject*> preLoad);
+	void addPlayers(GameObject* o);
 	void add(GameObject* o);
 	void remove(GameObject* o);
 
@@ -29,6 +29,7 @@ private:
 	vector<GameObject*> objects;
 	vector<GameObject*> added;
 	vector<GameObject*> removed;
+	vector<GameObject*> keyPlayers;
 	
 };
 
