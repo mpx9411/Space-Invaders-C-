@@ -19,12 +19,8 @@ Player::Player(int x, int y, int w, int h, const char *path) : MovingObject{x, y
     /* Magnus */
     path = "/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Images/player.png";
 
-    /**
-     * fixing the position of the player and the texture
-     */
     SDL_Surface* pSurf = IMG_Load(path);
     setXY((eng.getWinW()-(pSurf->w))/2,(eng.getWinH()-(pSurf->h)*2)-10);
-	//coor = collisionSurface();
 
 	pTx = IMG_LoadTexture(eng.getRen(),path);
 
@@ -42,12 +38,6 @@ void Player::draw() const {
 void Player::tick() {
 
 }
-
-/*void Player::shootB() {
-
-	Bullet* bullet = Bullet::getInstance(this->getRect().x + 30, this->getRect().y + 30, 30, 30, "");
-	ses.add(bullet);
-}*/
 
 Player::~Player() {
     SDL_DestroyTexture(pTx);
@@ -69,43 +59,29 @@ void Player::keyPressed(const SDL_Event& e) {
     Mix_Chunk* pew = Mix_LoadWAV("/Users/olema/Documents/GitHub/CPROG_Inlupp/SDL/Sounds/shoot.wav");
 
     switch (e.key.keysym.sym) {
-        // up and down removed!
         case SDLK_RIGHT: {
-            //cout << playerRect.h ;
+
             int playerX = getRect().x + 10;
             int playerY = getRect().y;
             if (!(playerX > (eng.getWinW()-getRect().w)))
                 setXY(playerX, playerY);
-
-
-            break;
+			break;
         }
-
-            break;
         case SDLK_LEFT: {
             int playerX = getRect().x - 10;
             int playerY = getRect().y;
             if(!(playerX<0))
                 setXY(playerX,playerY);
-
-
             break;
         }
 		case SDLK_SPACE:
             Mix_PlayChannel(-1,pew,0);
-			eng.add(Bullet::getInstance(player->getRect().x + 8, player->getRect().y + 30, 30, 30, ""));
+			eng.add(Bullet::getInstance(player->getRect().x + 8, player->getRect().y, 30, 30, ""));
 			break;
     }
-
 }
 
 void Player::collidesWith(GameObject* o){}
 
 Player* player;
-
-/*void Player::keySpace(const SDL_Event &event) {
-    GameObject::keySpace(event);
-}*/
-
-//SKRIV DRAW METOD
 

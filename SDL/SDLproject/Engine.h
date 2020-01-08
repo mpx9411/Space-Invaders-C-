@@ -21,10 +21,8 @@ public:
 private:
 	SDL_Window* window;
 	SDL_Renderer* ren;
-	bool dontStop;
 	int width;
 	int height;
-	Uint32 tickInterval;
 	Uint32 nextTick;
 	vector<GameObject*> objects;
 	vector<GameObject*> added;

@@ -54,7 +54,6 @@ Invader::Invader(int x, int y, int w, int h,int type) : MovingObject{x, y, w, h}
     }
 
     setXY(x, y);
-	//coor = collisionSurface();
 
 }
 
@@ -71,33 +70,6 @@ void Invader::draw() const {
 
 void Invader::tick() {
 	if (varv % (5 + getHealth()) == 0) {
-
-
-
-		/**
-		 * first version, with one invader going down
-		 */
-		 /*
-			 if(getRect().y % 2 ==0) // invader is going to right
-			 {
-				 if(getRect().x==eng.getWinW()) //we are going down!
-					 setXY(getRect().x,getRect().y+31);
-				 else
-					 setXY(getRect().x+1,getRect().y);
-
-			 }
-			 else{ // invader is going to left
-
-				 if(getRect().x==0) //we are going down!
-					 setXY(getRect().x,getRect().y+31);
-				 else
-					 setXY(getRect().x-1,getRect().y);
-			 }
-		 */
-
-		 /**
-		 * second version, with invaders going left and right
-		 */
 
 		if (right != 0) {
 

@@ -19,9 +19,9 @@ Engine::Engine(){
     SDL_Init(SDL_INIT_EVERYTHING);
 
     window = SDL_CreateWindow(
-            "GAME", //TITLE
-            100, 100, // coordinates on the screen, in pixels, of the window's upper left corner
-            w, h, // window's length and height in pixels
+            "GAME",
+            100, 100,
+            w, h,
             0);
     ren = SDL_CreateRenderer(window, -1, 0);
     SDL_GetWindowSize(window, &width, &height);

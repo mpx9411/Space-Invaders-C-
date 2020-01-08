@@ -16,9 +16,8 @@ public:
 	void tick();
 	void keyPressed(const SDL_Event& e);
 	void collidesWith(GameObject* o);
-     //void keySpace(const SDL_Event& event);
-
 	~Player();
+
 private:
 	Player(int x, int y, int h, int w, const char *path);
     SDL_Texture* pTx;
