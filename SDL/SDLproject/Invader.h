@@ -1,6 +1,5 @@
 #ifndef INVADER_H
 #define INVADER_H
-
 #include "MovingObject.h"
 #include "Engine.h"
 #include "SDL.h"

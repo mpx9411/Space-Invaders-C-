@@ -36,22 +36,22 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 	bool quit = false;
 
 	while (!quit) {
-			Uint32 time = SDL_GetTicks();
-			while (SDL_PollEvent(&e)) {
-				nextTick = SDL_GetTicks() + tickInterval;
-				if (e.type == SDL_QUIT) {
-					quit = true;
-				}
-				if (e.type == SDL_KEYDOWN) {
-					for(GameObject* p: keyPlayers)
-						p->keyPressed(e);
-				}
+		Uint32 time = SDL_GetTicks();
+		while (SDL_PollEvent(&e)) {
+			nextTick = SDL_GetTicks() + tickInterval;
+			if (e.type == SDL_QUIT) {
+				quit = true;
 			}
+			if (e.type == SDL_KEYDOWN) {
+				for(GameObject* p: keyPlayers)
+					p->keyPressed(e);
+			}
+		}
 
 			SDL_RenderClear(getRen());
 			SDL_RenderCopy(getRen(), bgTex, NULL, NULL);
 
-			
+
 
 			for (GameObject* c : objects)
 				c->tick();
@@ -61,7 +61,7 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 			for (int i = 0; i < objects.size(); i++) {
 				for (int j = 1; j < objects.size(); j++) {
 					if (i != j && abs(objects[i]->getRect().x - objects[j]->getRect().x) <= 15 && objects[i]->getRect().y == objects[j]->getRect().y)
-					objects[i]->collidesWith(objects[j]);
+						objects[i]->collidesWith(objects[j]);
 				}
 			}
 

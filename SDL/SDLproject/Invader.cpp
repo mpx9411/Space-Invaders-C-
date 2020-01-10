@@ -70,27 +70,19 @@ void Invader::draw() const {
 
 void Invader::tick() {
 	if (varv % (5 + getHealth()) == 0) {
-
 		if (right != 0) {
-
 			if (right == 1)
 				left = 20;
-
 			right--;
-			//left++;
 			setXY(getRect().x + 1, getRect().y);
-
 		}
 		else {
 			if (left == 1)
 				right = 20;
-
 			left--;
-			//left++;
 			setXY(getRect().x - 1, getRect().y);
 		}
-	}
-	varv++;
+	}varv++;
 }
 
 void Invader::kill() {
