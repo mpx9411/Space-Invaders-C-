@@ -51,8 +51,6 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 			SDL_RenderClear(getRen());
 			SDL_RenderCopy(getRen(), bgTex, NULL, NULL);
 
-
-
 			for (GameObject* c : objects)
 				c->tick();
 			for (GameObject* c : objects)
@@ -80,7 +78,7 @@ void Engine::start(const char* background, const int FPS, vector<GameObject*> pr
 
 
 
-	}
+	}	
 
 void Engine::addPlayers(GameObject* o)
 {
@@ -99,8 +97,6 @@ void Engine::remove(GameObject* o) {
 SDL_Renderer* Engine::getRen() const{
 	return ren;
 }
-
-
 
  Engine :: ~Engine() {
      SDL_DestroyWindow(window);

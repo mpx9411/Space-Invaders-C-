@@ -28,7 +28,6 @@ private:
 	vector<GameObject*> added;
 	vector<GameObject*> removed;
 	vector<GameObject*> keyPlayers;
-	
 };
 
 extern Engine eng;

@@ -16,7 +16,6 @@ public:
 protected:
 	Bullet(int x, int y, int h, int w, const char* path);
 	
-	
 private:
 	bool out_of_bounds = false;
 	bool isOutOfBounds();
